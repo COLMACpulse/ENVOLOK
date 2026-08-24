@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ENVOLOK">
+<!--
+  THE MARK IS THE PRODUCT.
+
+  A closed envelope with an authorization arch above it, and one thing held
+  safely inside. Read it in a second: THIS IS THE BOUNDARY, THIS IS WHAT
+  STAYED INSIDE IT.
+
+  A first version put a slashed dot outside the lock to show the rejected
+  change. It was a good idea that DID NOT SURVIVE 16 PIXELS -- at favicon size
+  it read as dirt on the screen. Cut, because a mark that only works large is
+  not a mark.
+
+  Drawn on a 64 grid, flat colour, no gradients, no text.
+-->
+<g fill="none" stroke="#4ea3ff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- the authorization arch: what the plan permits -->
+  <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/>
+  <!-- the envelope: the bounded region -->
+  <rect x="13" y="26" width="38" height="27" rx="5"/>
+</g>
+<!-- what stayed inside -->
+<circle cx="32" cy="39.5" r="6" fill="#3ddc97"/>
+</svg>

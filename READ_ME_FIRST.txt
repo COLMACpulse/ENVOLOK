@@ -1,6 +1,65 @@
-ENVOLOK · LANDING PAGE
+ENVOLOK · PUBLIC SITE REPO
 
-  index.html   one file. Open it in a browser. Nothing else needed.
+  Everything in this folder goes in the PUBLIC repo. Nothing else does.
+
+  index.html            the page
+  mark.svg              the logomark
+  favicon-32.png        browser tab
+  apple-touch-icon.png  phone home screen
+  icon-512.png          large / PWA
+  og.png                THE SOCIAL CARD -- this is what appears when you text
+                        the link. It is the first thing your friend sees.
+  LICENSE               proprietary. read it.
+  README.md             what GitHub shows on the repo page
+  .nojekyll             tells Pages not to try to build anything
+
+GITHUB SETTINGS
+  Visibility : PUBLIC. Pages will not serve a private repo on the free tier,
+               and the whole point is that a stranger can open it.
+  Description: Landing page for ENVOLOK - PCCP execution assurance for
+               FDA-regulated medical devices. No build step, no dependencies,
+               no trackers.
+
+               THE EARLIER WORDING SAID "Single file". THAT WAS WRONG -- this
+               repo has ten files, four of them images the page references.
+               "No build step" is what is actually true and it is the thing a
+               reader cares about.
+  Pages      : Settings > Pages > Source: main branch, / (root). Done.
+  Custom domain: envolok.com, then tick Enforce HTTPS once the cert issues.
+
+IS IT STILL PROPRIETARY IF THE REPO IS PUBLIC?
+  MOSTLY YES, WITH ONE REAL CARVE-OUT, AND THE FIRST VERSION OF THIS FILE GOT
+  IT WRONG.
+
+  GitHub's Terms of Service section 5 says that by publishing publicly you
+  GRANT every GitHub user a licence to "use, display, and perform Your Content
+  through the GitHub Service and to reproduce Your Content solely on GitHub as
+  permitted through GitHub's functionality (for example, through forking)."
+
+  THAT IS A REAL GRANT AND YOU CANNOT TAKE IT BACK WITH A LICENSE FILE. The
+  first LICENSE written for this repo said no person may copy or distribute
+  anything -- which contradicts the terms you agree to by clicking Public. It
+  has been rewritten to leave the platform grant intact and reserve everything
+  else.
+
+  Outside that grant the default applies, in GitHub's own words: "without a
+  license, the default copyright laws apply, meaning that you retain all
+  rights to your source code and no one may reproduce, distribute, or create
+  derivative works from your work."
+
+  AND THE SCOPE OF THE FORK RIGHT IS GENUINELY UNSETTLED. Whether "reproduce
+  solely on GitHub through GitHub's functionality" includes MODIFYING a fork
+  is disputed and has not been decided by a court. The LICENSE says so rather
+  than pretending otherwise.
+
+  THE INSTRUMENT IS NOT IN THIS REPO. That is the real protection. What is
+  public is a description and a claim. What is private is the nineteen checks,
+  the compiler, the engine and the FDA suite.
+
+  KEEP IT THAT WAY. Publishing the instrument would be a section 102 public
+  disclosure event and would forfeit the patent option before you have ruled
+  on it -- the same clock you have been protecting on COA and HARKWAVE.
+
 
 TO PUT IT ONLINE
   Same as colmacpulse.com: drop index.html in a GitHub Pages repo, point a

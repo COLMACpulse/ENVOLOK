@@ -4,6 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ENVOLOK — proof a device change stayed inside its authorized PCCP</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="ENVOLOK — prove a device change stayed inside its authorized PCCP">
+<meta property="og:description" content="Compiles an authorized PCCP into a machine-checkable contract. DEPLOY, BLOCK or UNKNOWN against 19 named checks, with a signed receipt. 47 of 47 against FDA's published examples. Offline.">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og.png">
 <meta name="description" content="An offline instrument that decides whether a medical device change stayed inside its FDA-authorized Predetermined Change Control Plan, and signs a receipt naming every check. 47 of 47 against FDA's published examples.">
 <style>
 :root{
@@ -24,7 +33,9 @@ header{border-bottom:1px solid var(--line);
  background:radial-gradient(120% 80% at 50% -20%,#0e1d2b 0,var(--bg) 60%)}
 .nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0;
  font:11px var(--mono);letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
-.brand{font:800 17px var(--mono);letter-spacing:.3em;color:var(--bone)}
+.brand{font:800 17px var(--mono);letter-spacing:.3em;color:var(--bone);display:flex;align-items:center;gap:12px}
+.bmark{width:26px;height:26px;display:block;flex:0 0 26px}
+.bmark svg{width:26px;height:26px;display:block}
 .brand b{color:var(--acc)}
 .hero{padding:64px 0 76px}
 .eye{font:10px var(--mono);letter-spacing:.34em;color:var(--acc2);text-transform:uppercase}
@@ -81,7 +92,17 @@ footer a{color:var(--dim)}
 <header>
  <div class="wrap">
   <div class="nav">
-   <div class="brand">ENVO<b>LOK</b></div>
+   <div class="brand"><span class="bmark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ENVOLOK">
+
+<g fill="none" stroke="#4ea3ff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  
+  <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/>
+  
+  <rect x="13" y="26" width="38" height="27" rx="5"/>
+</g>
+
+<circle cx="32" cy="39.5" r="6" fill="#3ddc97"/>
+</svg></span>ENVO<b>LOK</b></div>
    <div>PCCP EXECUTION ASSURANCE</div>
   </div>
   <div class="hero">
@@ -288,6 +309,8 @@ an unresolved unknown                          <span class="u">UNKNOWN</span> no
   Sources: FDA, <em>Predetermined Change Control Plans for Medical Devices</em>, draft guidance,
   22 August 2024, Section VIII. FD&amp;C Act section 515C (21 U.S.C. 360e&ndash;4), added by FDORA
   section 3308.<br><br>
+  &copy; 2026 Range Art &amp; Design LLC. ENVOLOK is a trademark of Range Art &amp; Design LLC.<br>
+  All rights reserved. The ENVOLOK instrument is proprietary software and is not distributed here.<br><br>
   This page describes a software instrument. It is not regulatory advice, it is not a submission
   service, and it does not determine substantial equivalence. Those determinations are FDA's.
  </div>
