@@ -94,3 +94,39 @@ BEFORE YOU SEND IT
   Read it once as a stranger. Every number on that page is one this vet
   measured and can reproduce: 47 of 47, 19 checks, 3 verdicts, 0 network calls.
   If you change a number, change the asset first.
+
+
+COMPANY INFO ON THE PAGE -- WHAT IS THERE AND WHY
+
+  ON THE PAGE:
+    hello@envolok.com
+    "ENVOLOK is built by Range Art & Design LLC, a California limited
+     liability company."
+    Copyright and trademark line.
+
+  NOT ON THE PAGE:
+    Your street address. Your phone. Your name.
+
+  WHY THE ENTITY IS NAMED
+    You are asking a medical device company to send you their authorized PCCP.
+    That is a regulated document and the request goes through their legal
+    team. AN ANONYMOUS PAGE CANNOT RECEIVE THAT DOCUMENT -- there is nobody to
+    put on the NDA. Naming the LLC is what makes the ask answerable.
+
+    It also gives the trademark line an owner. "ENVOLOK is a trademark" means
+    nothing without a party holding it.
+
+  WHY THE ADDRESS IS NOT THERE
+    24822 Viejas Blvd is your house. It goes on a contract, a filing and an
+    NDA. It does not go on a public page that a stranger forwards, and it
+    tells a reader something about scale that the work itself does not.
+
+    No legitimacy is lost. A California LLC is publicly searchable by name --
+    anyone who wants to verify you exist already can, without you publishing
+    where you sleep.
+
+  WHAT TO SET UP BEFORE THE PAGE GOES LIVE
+    hello@envolok.com must actually receive mail. You already did this for
+    hello@colmacpulse.com through Namecheap forwarding -- same job, ten
+    minutes. A dead contact address on a page asking for a regulated document
+    is worse than no page.
