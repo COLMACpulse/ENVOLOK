@@ -130,3 +130,35 @@ COMPANY INFO ON THE PAGE -- WHAT IS THERE AND WHY
     hello@colmacpulse.com through Namecheap forwarding -- same job, ten
     minutes. A dead contact address on a page asking for a regulated document
     is worse than no page.
+
+
+THE TRADEMARK CLAIM
+
+  The page now carries ENVOLOK(TM) in the masthead, on first mention in the
+  body, and on the social card. The footer states it is UNREGISTERED and
+  claimed under common law.
+
+  (TM) IS FREE AND NEEDS NO REGISTRATION. It is a public claim of common-law
+  rights and it works from the day you use the name in commerce. (R) is
+  different -- that requires a granted USPTO registration and using it without
+  one is a real problem, not a technicality. The page says UNREGISTERED
+  explicitly so nobody can read a registration into it.
+
+  WHAT THE NAME SEARCH FOUND, 2026-08-24
+
+    ENVOLOK  -- ZERO results. No company, no product, no trademark record.
+                Nearest software marks are ENVOLV SOLUTIONS (PR software,
+                1999) and ENVOQUE INFORMATICS (cloud hosting). Different
+                words, neither a collision.
+
+    ENVELOK  -- taken by MEAD. It is a legal-size document wallet, cheshire
+                linen with a Velcro flap, sold on Amazon and in drug stores.
+                PAPER GOODS, not software. That is why the domain was gone.
+
+  THIS WAS A WEB SEARCH, NOT A TRADEMARK KNOCKOUT. No systematic USPTO TESS
+  search was run. A real knockout checks Class 9 (downloadable software) and
+  Class 42 (software as a service) for the exact mark, phonetic equivalents
+  and confusingly similar marks -- ENVOLOC, ENVALOK, ENVOLOX, INVOLOK.
+
+  PUT ENVOLOK ON THE KNOCKOUT LIST BESIDE VUNESTRA. Same gate, same counsel,
+  before the name is load-bearing in front of a buyer.

@@ -3,10 +3,12 @@
 **Marketing website only.** The ENVOLOK instrument is proprietary and is not in
 this repository.
 
-ENVOLOK compiles an FDA-authorized Predetermined Change Control Plan into a
-machine-checkable contract, reads a device change's evidence folder, and returns
-**DEPLOY**, **BLOCK** or **UNKNOWN** against nineteen named checks — then signs
-an Ed25519 receipt naming every check and its result.
+A Predetermined Change Control Plan tells FDA what a device maker may change
+without filing again. ENVOLOK checks a proposed change against that plan before
+it ships, stops the ones that fall outside it, and produces a signed record of
+exactly what was verified.
+
+Anything that was never measured comes back as unknown rather than as a pass.
 
 It runs offline. No cloud, no account, no telemetry.
 
@@ -24,6 +26,6 @@ zero external requests. Open `index.html` in a browser and it works.
 
 ---
 
-© 2026 Range Art & Design LLC. ENVOLOK is a trademark of Range Art & Design LLC.
+© 2026 Range Art & Design LLC. ENVOLOK™ is an unregistered trademark of Range Art & Design LLC.
 Proprietary; see LICENSE for what is and is not granted, including the GitHub
 Terms of Service fork right that a public repository necessarily carries.
