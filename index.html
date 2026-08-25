@@ -135,6 +135,7 @@ blockquote cite{display:block;margin-top:12px;font:10.5px var(--mono);color:var(
 .tl.F{fill:#4fd6a0}
 .tl.B{fill:#ff8b84}
 .tl.ok{fill:#7cc4ff}
+.tl.w{fill:#e0b464}
 
 /* sources */
 .srcs{display:grid;gap:10px;margin-top:24px}
@@ -181,24 +182,27 @@ footer em{font-family:var(--serif)}
    <b>A real run.</b> The plan is UpDoc's, authorized by FDA on 23 December 2025.
    The four it cleared are changes that plan permits. The three it stopped are
    limits stated elsewhere in the same FDA document.
-  </div><svg class="dgm" viewBox="0 0 470 384" xmlns="http://www.w3.org/2000/svg" role="img"
+  </div><svg class="dgm" viewBox="0 0 470 472" xmlns="http://www.w3.org/2000/svg" role="img"
  aria-label="Terminal output from a real ENVOLOK run against the authorized PCCP for K253281. 4 changes deployed, 3 blocked.">
 <!-- GENERATED from K253281_RESULTS.json. Do not hand-edit: --check fails. -->
-<rect x="1" y="1" width="468" height="382" rx="7" class="term"/>
+<rect x="1" y="1" width="468" height="470" rx="7" class="term"/>
 <circle cx="22" cy="19" r="4.5" class="tb1"/><circle cx="38" cy="19" r="4.5" class="tb2"/><circle cx="54" cy="19" r="4.5" class="tb3"/>
 <text x="74" y="23" class="tt">envolok — K253281</text>
 <text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
 <text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
-<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 19 checks armed</text>
-<text x="20" y="162" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
-<text x="20" y="184" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
-<text x="20" y="206" class="tl F" xml:space="preserve">  carb counting                  DEPLOY</text>
-<text x="20" y="228" class="tl F" xml:space="preserve">  Apple HealthKit input          DEPLOY</text>
-<text x="20" y="250" class="tl B" xml:space="preserve">  type 1 diabetes                BLOCK</text>
-<text x="20" y="272" class="tl B" xml:space="preserve">  patients under 18              BLOCK</text>
-<text x="20" y="294" class="tl B" xml:space="preserve">  non-deterministic dose         BLOCK</text>
-<text x="20" y="338" class="tl ok" xml:space="preserve">25 of 25 cases · agreed with the authorized plan</text>
-<text x="20" y="360" class="tl d" xml:space="preserve">receipt  ed25519 · signed</text>
+<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 23 checks armed</text>
+<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf \u00b7 asserted by QA/RA</text>
+<text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
+<text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
+<text x="20" y="228" class="tl F" xml:space="preserve">  carb counting                  DEPLOY</text>
+<text x="20" y="250" class="tl F" xml:space="preserve">  Apple HealthKit input          DEPLOY</text>
+<text x="20" y="272" class="tl B" xml:space="preserve">  type 1 diabetes                BLOCK</text>
+<text x="20" y="294" class="tl B" xml:space="preserve">  patients under 18              BLOCK</text>
+<text x="20" y="316" class="tl B" xml:space="preserve">  non-deterministic dose         BLOCK</text>
+<text x="20" y="360" class="tl ok" xml:space="preserve">25 of 25 cases · agreed with the authorized plan</text>
+<text x="20" y="382" class="tl d" xml:space="preserve">receipt  ed25519 · signed</text>
+<text x="20" y="426" class="tl w" xml:space="preserve">not verified  that the asserted label describes the change.</text>
+<text x="20" y="448" class="tl w" xml:space="preserve">              A named person asserted it. Recorded, not proven.</text>
 </svg></div>
 </div></div>
 
@@ -223,9 +227,10 @@ footer em{font-family:var(--serif)}
   </div>
   <div>
    <h3>Three &middot; it clears the change, or stops it</h3>
-   <p>A verdict in well under a second: DEPLOY, BLOCK or UNKNOWN, the failing rule named if
-   there is one, and a signed receipt listing every check it ran. Verifiable by
-   anyone, without ENVOLOK and without us.</p>
+   <p>A verdict in well under a second: DEPLOY, BLOCK or UNKNOWN, the failing
+      rule named if there is one, and a signed receipt listing all twenty-three
+      checks <b>and what it did not check</b>. Verifiable by anyone, without
+      ENVOLOK and without us.</p>
   </div>
  </div>
 
@@ -436,6 +441,50 @@ footer em{font-family:var(--serif)}
  software is a growing share of what goes wrong, and the mechanism the industry was given
  to change software faster is a document that nothing checks. <strong>Those three facts
  are pointed at each other.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>What it refuses to claim</h2>
+ <p class="big">A machine cannot read intent. It reads a label somebody typed.
+ Every tool in this category has that problem. <strong>ENVOLOK is the one that
+ says so on the receipt.</strong></p>
+
+ <p class="body">Somebody decides that a change is a user-interface enhancement
+ rather than a new indication. That is a human judgment, and no software will ever
+ make it. <strong>What software can do is refuse to let the judgment be
+ anonymous.</strong></p>
+
+ <div class="two three">
+  <div>
+   <h3>It demands a description</h3>
+   <p>A label on its own is a string. The engine will not grade a change without a
+   written account of what actually changed, and it will not accept "tweak."</p>
+  </div>
+  <div>
+   <h3>It demands a name</h3>
+   <p>Somebody has to assert that the label describes the change. Their name and the
+   date go into the signed record. <b>A mislabel is no longer invisible. It is
+   permanent and it belongs to someone.</b></p>
+  </div>
+  <div>
+   <h3>It demands provenance</h3>
+   <p>The boundary has to name the document it came from, with a hash and an
+   attestation, or nothing is graded at all. <b>A boundary with no provenance is a
+   boundary somebody typed.</b></p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">And the receipt carries its own limits
+ <strong>inside the signed body</strong>, so they cannot be stripped without breaking
+ the signature. In plain words, on every record it produces:</p>
+
+ <blockquote>Not verified: that the asserted label correctly describes the actual
+ change. A named person asserted that. It is recorded here, not proven.
+ <cite>from the receipt schema, on every ENVOLOK verdict</cite></blockquote>
+
+ <p class="body">A receipt that implies more than it checked launders a human
+ judgment into a machine verdict. <strong>That is the failure this exists to
+ prevent, so it would be a strange thing to commit.</strong></p>
 </div></section>
 
 <section><div class="w">
