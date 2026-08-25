@@ -83,7 +83,8 @@ blockquote cite{display:block;margin-top:14px;font:11px var(--mono);color:var(--
 .two.three > div:first-child{background:transparent}
 .two.three > div{border-right:1px solid var(--line);background:transparent}
 .two.three > div:last-child{border-right:0;background:transparent}
-.two.three > div:first-child h3,.two.three > div:last-child h3,.two.three h3{color:var(--acc);text-transform:none;font:700 14px var(--sans);letter-spacing:.01em;margin-bottom:10px}
+.two.three > div:first-child h3,.two.three > div:last-child h3,.notthis h3{color:var(--stop) !important}
+.two.three h3{color:var(--acc);text-transform:none;font:700 14px var(--sans);letter-spacing:.01em;margin-bottom:10px}
 .two.three p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.68}
 @media(max-width:820px){.two.three{grid-template-columns:1fr}
  .two.three > div{border-right:0;border-bottom:1px solid var(--line)}
@@ -414,6 +415,41 @@ footer a:hover{color:var(--acc);border-bottom-color:var(--acc)}
  software is a growing share of what goes wrong, and the mechanism the industry was given
  to change software faster is a document that nothing checks. <strong>Those three facts
  are pointed at each other.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>What this is not</h2>
+ <p class="body">By the time somebody reads this page they have usually been pitched by
+ all three of the following, and none of them does this job.</p>
+
+ <div class="two three notthis">
+  <div>
+   <h3>Not a quality management system</h3>
+   <p>Your eQMS <b>records</b> that a change was approved and routes it to the right
+   signatures. It does not read the plan FDA authorized and tell you whether this
+   particular change is inside it. Several of those vendors publish long explainers
+   about PCCPs; every one ends in a demo request.</p>
+  </div>
+  <div>
+   <h3>Not an AI governance platform</h3>
+   <p>Gartner named that market in June 2026 and it is a real one, aimed at NIST AI RMF,
+   ISO 42001 and the EU AI Act. It governs AI in general. <b>It does not open your
+   authorized PCCP and check a release against it</b>, and among the leaders, enforcement
+   at the point of deployment is still described as roadmap.</p>
+  </div>
+  <div>
+   <h3>Not a regulatory consultant</h3>
+   <p>A consultant helps you <b>write</b> the plan and get it authorized. That is real
+   work and worth paying for. Then they leave, the plan goes in a drawer, and every
+   change made under it for the life of the device is checked by somebody remembering
+   what it said.</p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">ENVOLOK is the check. It reads the plan that was
+ authorized and returns a verdict on the change in front of you.
+ <strong>If your eQMS or your governance platform already does that, do not buy this
+ &mdash; ask them to show you the verdict and the rule it cites.</strong></p>
 </div></section>
 
 <section id="sources"><div class="w">

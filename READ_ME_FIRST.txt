@@ -199,3 +199,35 @@ A FIGURE THAT WAS CUT
   the 236 US device recalls that quarter, second only to device failure at 48.
   A rank and a raw count from the quarterly index beats a percentage from an
   aggregator.
+
+
+THE COMPETITIVE SEARCH, 2026-08-25
+
+  Ran INCOMING vs THE COMPETITOR: search the FUNCTION, not the word.
+  Three categories exist. NONE OF THEM DOES THIS JOB.
+
+  eQMS VENDORS -- Greenlight Guru, MasterControl, Qualio, Qualityze, Veeva,
+  Sparta, ETQ, Cloudtheapp. They RECORD that a change was approved and route
+  signatures. Several publish long PCCP explainers; EVERY ONE ENDS IN A DEMO
+  REQUEST. They are using PCCP as content marketing to sell a QMS.
+
+  AI GOVERNANCE PLATFORMS -- and this is now a formal market. Gartner
+  published its inaugural Magic Quadrant for AI Governance Platforms on
+  16 June 2026: thirteen vendors, IBM/ServiceNow/Truyo as Leaders,
+  Credo AI/OneTrust/Monitaur as Visionaries. THEY GOVERN AI IN GENERAL --
+  NIST AI RMF, ISO 42001, EU AI Act -- NOT FDA PCCPs. And among the leaders,
+  enforcement at the point of deployment is still documented as ROADMAP.
+
+  REGULATORY CONSULTANTS -- they help you WRITE the plan. Services. Once it
+  is authorized they leave and the plan sits in a drawer.
+
+  THE GAP: nobody takes a SPECIFIC AUTHORIZED PCCP and returns a verdict on
+  a SPECIFIC CHANGE before it ships.
+
+  THE THREAT, STATED HONESTLY: THIS IS A FEATURE, NOT OBVIOUSLY A COMPANY.
+  Credo AI already ships "policy packs" that turn regulation into controls;
+  a PCCP pack is an obvious roadmap item, and they have Gartner recognition
+  and enterprise sales. The eQMS vendors already own the customer
+  relationship inside the quality department. WEDGES CLOSE. What ENVOLOK has
+  is timing and specificity -- validated against FDA's own published examples
+  and one real authorized plan, which none of the above has done publicly.
