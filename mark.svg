@@ -13,12 +13,12 @@
 
   Drawn on a 64 grid, flat colour, no gradients, no text.
 -->
-<g fill="none" stroke="#4ea3ff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+<g fill="none" stroke="#1c4e6b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
   <!-- the authorization arch: what the plan permits -->
   <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/>
   <!-- the envelope: the bounded region -->
   <rect x="13" y="26" width="38" height="27" rx="5"/>
 </g>
 <!-- what stayed inside -->
-<circle cx="32" cy="39.5" r="6" fill="#3ddc97"/>
+<circle cx="32" cy="39.5" r="6" fill="#0f6f4c"/>
 </svg>

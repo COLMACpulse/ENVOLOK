@@ -231,3 +231,38 @@ THE COMPETITIVE SEARCH, 2026-08-25
   relationship inside the quality department. WEDGES CLOSE. What ENVOLOK has
   is timing and specificity -- validated against FDA's own published examples
   and one real authorized plan, which none of the above has done publicly.
+
+
+THE VISUAL MAKEOVER, 2026-08-25
+
+  The operator: "it looks like ai made this for a dude with a cell phone...
+  it seems kinda cookie cutter."
+
+  HE WAS RIGHT, AND THE TELL WAS NOT THE DARK MODE. IT WAS THAT EVERYTHING
+  WAS MONOSPACE. Mono should mean THIS IS MACHINE OUTPUT. When the prose is
+  mono too, nothing is distinguished and the whole page reads as costume.
+  Dark background plus blue accent plus mono everywhere plus card grids is
+  what every AI-built landing page looks like.
+
+  THE NEW REGISTER: A TECHNICAL DOCUMENT, NOT A STARTUP.
+
+  A VP Quality reads FDA guidance, marketing submissions and lab reports all
+  day. That is the world they trust. So:
+
+     paper background, not a dark canvas
+     SERIF for prose -- it reads as a document, not a pitch
+     SANS for headings only
+     MONO ONLY for machine output and data tables, where it earns its meaning
+     hairline rules instead of floating cards
+     sections numbered like regulatory text -- section 1, section 2
+     THE TERMINAL STAYS DARK, because terminals are dark. It is now the only
+       dark thing on the page, so the eye goes straight to the evidence.
+
+  The mark was re-inked for paper -- deep navy stroke, deep green dot. Bright
+  #4ea3ff on an off-white page reads as a toy. Favicons and the social card
+  were rebuilt on paper to match.
+
+  AND MOBILE WAS BROKEN BY THE RESTYLE. The hero kept its two columns below
+  900px and squeezed the terminal to an unreadable thumbnail. Caught by
+  looking at a 430px render, not by any check. Fixed: the hero stacks and the
+  terminal runs full width at 370px.
