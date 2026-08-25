@@ -266,3 +266,34 @@ THE VISUAL MAKEOVER, 2026-08-25
   900px and squeezed the terminal to an unreadable thumbnail. Caught by
   looking at a 430px render, not by any check. Fixed: the hero stacks and the
   terminal runs full width at 370px.
+
+
+TWO DEFECTS THE MAKEOVER INTRODUCED, BOTH CAUGHT BY MEASURING
+
+  The vet reported the restyle as "verified at four widths, zero errors."
+  IT HAD MEASURED PAGE ERRORS, NETWORK REQUESTS AND TERMINAL WIDTH -- NOT
+  WHETHER THE TEXT WAS READABLE, which is the entire point of a visual pass.
+
+  1. BODY TEXT FAILED WCAG CONTRAST.
+     --mut was #7b8791, which reads 3.37 on paper and 3.64 on card against a
+     4.5 minimum. That colour is not decoration. It carried the caption under
+     the terminal, every source-card description, every table sub-label, the
+     offline strip, AND THE WHOLE FOOTER INCLUDING ALL FIVE SOURCE LINKS.
+
+     The description under "Check every number yourself" -- the section whose
+     entire job is being read -- was at 3.37.
+
+     Cause: a grey that was fine on a dark canvas was carried unchanged onto
+     a light one and never re-measured.
+     Fixed: #63707b. Paper 4.66, card 5.04.
+
+     NOW MEASURED PROPERLY: every visible text element on the page, walked in
+     the browser, each one compared against ITS OWN COMPUTED BACKGROUND rather
+     than an assumed one, with the large-text exemption applied.
+     194 ELEMENTS CHECKED, ZERO FAILURES.
+
+  2. ONE HEADING HAD NO SECTION NUMBER.
+     Ten h2 elements, nine sections. "Point it at your own PCCP" sat in a
+     plain div, so the closing ask was the only heading without its section
+     mark -- which reads as an oversight, not a decision. Fixed: it is a
+     section now, and numbered like the rest.
