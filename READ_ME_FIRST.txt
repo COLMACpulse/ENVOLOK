@@ -162,3 +162,40 @@ THE TRADEMARK CLAIM
 
   PUT ENVOLOK ON THE KNOCKOUT LIST BESIDE VUNESTRA. Same gate, same counsel,
   before the name is load-bearing in front of a buyer.
+
+
+BEFORE THE PAGE GOES LIVE: CLICK ALL FIVE SOURCE LINKS
+
+  The footer carries five links so a reader can check every figure against
+  the original. That is the page's whole argument, so a dead link is worse
+  than no link at all.
+
+  VERIFIED BY READING THE DOCUMENT:
+     fda.gov/media/180978/download                  the guidance, 8 examples
+     accessdata.fda.gov/cdrh_docs/reviews/K253281.pdf   the authorized PCCP
+
+  RETURNED BY SEARCH WITH MATCHING CONTENT, NOT OPENED DIRECTLY:
+     mckinsey.com  .../capturing-the-value-of-good-quality-in-medical-devices
+     advamed.org   .../state-of-the-nation-2025-global-medical-device-recall-index-report
+     sedgwick.com  /press-release/u-s-industries-see-more-recalls-and-defective-units-in-2025/
+
+  This vet could not open any of them from its container -- every outbound
+  request returns 403, the same filter that blocked colmacpulse.com all
+  session. THAT IS NOT EVIDENCE ABOUT THE URLS. Click them once yourself.
+
+  THE LINKS DO NOT BREAK THE OFFLINE PROPERTY. An href loads nothing until
+  somebody clicks it. The page still makes ZERO network requests when it
+  opens, which is what "no trackers" means and what the LICENSE and README
+  claim.
+
+A FIGURE THAT WAS CUT
+
+  An earlier draft carried "software defects account for 8.2% of recall
+  events, grew 31% year over year." THAT NUMBER APPEARS IN NO SEDGWICK
+  MATERIAL -- it came from a blog aggregating several sources, which is the
+  same fault as the two vendor cost figures cut the day before.
+
+  Replaced with Sedgwick's own Q1 2025 counts: software issues caused 31 of
+  the 236 US device recalls that quarter, second only to device failure at 48.
+  A rank and a raw count from the quarterly index beats a percentage from an
+  aggregator.
