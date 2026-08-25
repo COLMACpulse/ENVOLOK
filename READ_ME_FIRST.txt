@@ -297,3 +297,49 @@ TWO DEFECTS THE MAKEOVER INTRODUCED, BOTH CAUGHT BY MEASURING
      plain div, so the closing ask was the only heading without its section
      mark -- which reads as an oversight, not a decision. Fixed: it is a
      section now, and numbered like the rest.
+
+
+THE CONTACT ADDRESS, 2026-08-25 — READ THIS BEFORE YOU CHANGE IT BACK
+
+  THE PAGE NOW POINTS AT hello@colmacpulse.com, NOT hello@envolok.com.
+
+  WHY. envolok.com went live with hello@envolok.com on it, and that mailbox
+  DOES NOT RECEIVE MAIL. The operator sent a test and nothing arrived. Every
+  setting on the Namecheap side is correct -- BasicDNS, forwarder added, DNS
+  records right -- and it still does not deliver. That is a Namecheap
+  provisioning failure, not an operator error.
+
+  A LIVE PAGE WITH A DEAD CONTACT PATH IS WORSE THAN NO PAGE. The only action
+  the entire page asks for is an email. Anyone sent to it reads the whole
+  argument, decides to make contact, and disappears -- and you never find out
+  it happened. THAT IS A BURNED FIRST IMPRESSION YOU DO NOT GET BACK.
+
+  So the page uses the address that is known to work.
+
+  WHEN THE FORWARDER STARTS DELIVERING
+     Test it first. Send mail from a phone, on a different account, and see
+     it arrive. THEN change the two references back:
+        index.html   the mailto: href and the visible link text
+        LICENSE and README.md if they mention it
+     DO NOT CHANGE IT BACK ON THE ASSUMPTION THAT TIME FIXED IT.
+
+  IF IT IS STILL DEAD TOMORROW
+     Namecheap live chat. Say: BasicDNS, email forwarding added for
+     hello@envolok.com, no MX records in Advanced DNS, mail not delivering.
+     They fix it in about five minutes. It is a known failure on their side.
+
+STILL OPEN ON THIS PACKAGE
+
+  THE SOURCE HASH IN THE SHIPPED CONTRACT IS A PLACEHOLDER. real_pccp/
+  K253281_updoc.json carries sha256 = NOT_COMPUTED_BY_THIS_VET and an unsigned
+  attestation. The product demands provenance it does not itself supply, which
+  is the first thing a diligence engineer will open.
+
+  FIFTEEN MINUTES TO CLOSE:
+     download  accessdata.fda.gov/cdrh_docs/reviews/K253281.pdf
+     hash it   Get-FileHash K253281.pdf -Algorithm SHA256
+     paste the digest into "sha256", put a real name in "attested_by"
+     re-run    python real_pccp/run_k253281.py    must still read 25 of 25
+
+  NOT A BLOCKER FOR SENDING THE LINK. It is a blocker for a buyer opening
+  the bundle.
