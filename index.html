@@ -208,7 +208,7 @@ footer em{font-family:var(--serif)}
 
 <section><div class="w">
  <h2>What it actually is</h2>
- <p class="big">A 440 KB program that runs on a machine inside your quality system.
+ <p class="big">A small program &mdash; the engine is under 40 KB of source &mdash; that runs on a machine inside your quality system.
  Not a service, not a portal, not a consultant. There is no account and no server to call.</p>
 
  <div class="two three">
@@ -447,6 +447,48 @@ footer em{font-family:var(--serif)}
  software is a growing share of what goes wrong, and the mechanism the industry was given
  to change software faster is a document that nothing checks. <strong>Those three facts
  are pointed at each other.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>What happened when it was attacked</h2>
+ <p class="big">This was built by attacking it, publishing what broke, and
+ fixing that. <strong>Six rounds. The record of every failure ships with the
+ instrument.</strong></p>
+
+ <p class="body">Some of those attacks landed hard. An early version claimed to
+ enforce scope; a red team showed the scope test was a label in a list, and that
+ a mislabelled out-of-scope change deployed. <strong>That claim was withdrawn and
+ the product got smaller</strong> &mdash; it now demands a written description, a
+ named asserter and a boundary bound to its source, and the receipt says what it
+ did not check.</p>
+
+ <p class="body">The clearest example is a scoring one. A hostile layout test was
+ scored by one method and passed most cases. <strong>The scorer was then rebuilt
+ to be harsher &mdash; rejecting truncated and contaminated rule text &mdash; and
+ the same run scored worse.</strong></p>
+
+ <table class="tbl money">
+  <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
+  <tr><td>Rules recovered cleanly<br><span class="sm">exact text, no truncation, correct section</span></td>
+      <td class="v">21 / 23</td><td class="v">17 / 23</td></tr>
+  <tr><td>Cases fully passing<br><span class="sm">across five hostile document layouts</span></td>
+      <td class="v">3 / 5</td><td class="v">0 / 5</td></tr>
+ </table>
+
+ <p class="body" style="margin-top:26px"><strong>The worse number was published as
+ the authoritative one</strong>, and the five failures behind it were repaired and
+ re-tested against that same harsher scorer. There is no version of this page
+ where the lenient number was the one that got reported.</p>
+
+ <div class="plain">
+  <b>And one thing is still open, so it is written down rather than hidden.</b>
+  There is a research path that reads change control plans directly out of PDFs.
+  Its layout handling is solid. <b>Its rule detection is not</b> &mdash; it keys on
+  document formatting rather than meaning, so it can miss a genuine rule written as
+  a numbered list and can accept a sentence that merely looks like one.
+  <b>That path is marked candidate-only in the code and is not part of what
+  ENVOLOK does today.</b>
+ </div>
 </div></section>
 
 <section><div class="w">
