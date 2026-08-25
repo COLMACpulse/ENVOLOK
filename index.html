@@ -190,7 +190,7 @@ footer em{font-family:var(--serif)}
 <text x="74" y="23" class="tt">envolok — K253281</text>
 <text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
 <text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
-<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 23 checks armed</text>
+<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 22 checks armed</text>
 <text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf \u00b7 asserted by QA/RA</text>
 <text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
 <text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
@@ -297,6 +297,24 @@ footer em{font-family:var(--serif)}
  <strong>47 decisions the regulator has already made, in public</strong>. ENVOLOK was run against every one of
  them, and agreed with the agency on all 47.</p>
 
+ <p class="body"><strong>What that number measures, stated plainly.</strong> The scope test is set
+ membership: a modification label is checked against the list of categories the
+ plan permits. The suite builds that list from FDA's own in-scope list, so the
+ 47 confirm that the agency's boundary was <em>encoded correctly</em> and that the
+ engine enforces the encoding. They do not show a machine interpreting the
+ guidance. <strong>No machine reads intent, and this one says so on its own
+ receipt.</strong> Example 8 ran in-scope only, three of six or more cases: FDA's
+ out-of-scope list for that device was not retrievable, and a page that scored it
+ as a clean sweep would be hiding the gap rather than reporting it.</p>
+
+ <p class="body"><strong>The computed evidence is the K253281 run below.</strong> Six of those
+ twenty-five cases are not membership tests at all. They compare a measured value
+ against an acceptance range the manufacturer wrote and FDA authorized: a
+ regression suite at 99.4% against a required 100% blocks, one unit conversion
+ error in a thousand against a required zero blocks, a 2% import deviation
+ against a required zero blocks. <strong>That is the instrument computing a
+ verdict, on a real filed plan.</strong></p>
+
  <table class="tbl">
   <tr><th>FDA example</th><th>Device</th><th>Result</th></tr>
   <tr><td>1</td><td>Cancer risk microarray, over the counter</td><td class="g">agreed</td></tr>
@@ -306,11 +324,11 @@ footer em{font-family:var(--serif)}
   <tr><td>5</td><td>Sleep apnea risk app, over the counter</td><td class="g">agreed</td></tr>
   <tr><td>6</td><td>Antimicrobial susceptibility test</td><td class="g">agreed</td></tr>
   <tr><td>7</td><td>HLA typing assay</td><td class="g">agreed</td></tr>
-  <tr><td>8</td><td>Implantable pulse generator</td><td class="g">agreed</td></tr>
+  <tr><td>8</td><td>Implantable pulse generator</td><td class="g">agreed, in-scope only</td></tr>
  </table>
 
  <div class="rule">
-  <div><b>47 / 47</b><span>agreed with FDA</span></div>
+  <div><b>47 / 47</b><span>agreed with FDA, Ex.8 in-scope only</span></div>
   <div><b>8</b><span>device classes</span></div>
   <div><b>25 / 25</b><span>on a real authorized plan</span></div>
   <div><b>0.1 sec</b><span>to run all 47</span></div>
@@ -467,13 +485,17 @@ footer em{font-family:var(--serif)}
  to be harsher &mdash; rejecting truncated and contaminated rule text &mdash; and
  the same run scored worse.</strong></p>
 
- <table class="tbl money">
-  <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
-  <tr><td>Rules recovered cleanly<br><span class="sm">exact text, no truncation, correct section</span></td>
-      <td class="v">21 / 23</td><td class="v">17 / 23</td></tr>
-  <tr><td>Cases fully passing<br><span class="sm">across five hostile document layouts</span></td>
-      <td class="v">3 / 5</td><td class="v">0 / 5</td></tr>
- </table>
+ <table class="tbl">
+ <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
+ <tr><td>Cases fully passing across five hostile document layouts</td><td>3 / 5</td><td>0 / 5</td></tr>
+ <tr><td>After repair, re-tested against the strict scorer</td><td>&mdash;</td><td>5 / 5</td></tr>
+</table>
+<p class="body" style="font-size:.92em"><strong>What you can check, and what you cannot.</strong> The
+strict <em>0 / 5</em> is written into <code>layout_authority/REPORT.md</code> in the release, and the
+repaired <em>5 / 5</em> is reproducible: run <code>layout_authority/run_v20_closure_gauntlet.py</code>
+and it prints all five cases with the strict criteria applied. The lenient run belongs to a v1.9 tree
+that is not shipped, so its per-rule counts are <strong>not verifiable from the package</strong> and are
+not quoted here.</p>
 
  <p class="body" style="margin-top:26px"><strong>The worse number was published as
  the authoritative one</strong>, and the five failures behind it were repaired and
