@@ -165,7 +165,7 @@ footer em{font-family:var(--serif)}
   <g fill="none" stroke="#1c4e6b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
    <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/><rect x="13" y="26" width="38" height="27" rx="5"/></g>
   <circle cx="32" cy="39.5" r="6" fill="#0f6f4c"/></svg></span>
- <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">Makes an authorized PCCP enforceable</span>
+ <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">Checks a modification against the plan FDA authorized</span>
 </div></div></div>
 
 <div class="hero"><div class="w">
@@ -182,11 +182,12 @@ footer em{font-family:var(--serif)}
  </div>
  <div class="hdgm">
   <div class="dcap">
-   <b>Seven of the twenty-five cases, run on this plan.</b> The plan is UpDoc's, an insulin
-   management app FDA cleared on 23 December 2025. The four that deployed are
-   modifications the plan lists as permitted. The three that blocked are patients
-   and behaviours the same FDA document rules out: type 1 diabetes, under 18,
-   dosing that is not deterministic.
+   <b>UpDoc is an insulin management app.</b> FDA cleared it on 23 December 2025 and
+   authorized its change control plan as part of that clearance. ENVOLOK was run
+   against that plan; the terminal shows seven of the twenty-five cases. The four
+   that deployed are modifications the plan permits. The three that blocked are
+   patients and behaviours the same FDA document rules out: type 1 diabetes,
+   patients under 18, and dosing that is not deterministic.
   </div><svg class="dgm" viewBox="0 0 470 472" xmlns="http://www.w3.org/2000/svg" role="img"
  aria-label="Terminal output from a real ENVOLOK run against the authorized PCCP for K253281. 4 changes deployed, 3 blocked.">
 <!-- GENERATED from K253281_RESULTS.json. Do not hand-edit: --check fails. -->
@@ -196,7 +197,7 @@ footer em{font-family:var(--serif)}
 <text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
 <text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
 <text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 24 checks armed</text>
-<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf \u00b7 asserted by QA/RA</text>
+<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf &#183; asserted by QA/RA</text>
 <text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
 <text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
 <text x="20" y="228" class="tl F" xml:space="preserve">  carb counting                  DEPLOY</text>
@@ -336,7 +337,7 @@ footer em{font-family:var(--serif)}
   <div><b>47 / 47</b><span>agreed with FDA, Ex.8 in-scope only</span></div>
   <div><b>8</b><span>device classes</span></div>
   <div><b>25 / 25</b><span>on a real authorized plan</span></div>
-  <div><b>0.1 sec</b><span>to run all 47</span></div>
+  <div><b>0</b><span>accounts to create</span></div>
   <div><b>0</b><span>network calls</span></div>
  </div>
 
@@ -357,13 +358,13 @@ footer em{font-family:var(--serif)}
   the plan said 100%.
   <br><br>
   And the obvious objection &mdash; that whoever wrote the rules also wrote the test
-  &mdash; is answered rather than dodged. <b>Every one of the twelve rules encoded from
+  &mdash; has an answer. <b>Every one of the twelve rules encoded from
   that plan was traced word for word back to FDA's own text. Twelve found, none
   invented</b>, and the transcription ships with the instrument so you can check the
   tracing yourself.
   <br><br>
-  <b>What it still does not prove.</b> That is one company's plan, not yours. Around thirty
-  devices have authorized plans today and every one is different.
+  <b>What it still does not prove.</b> That is one company's plan, not yours. Across all FDA panels 170
+  devices carry an authorized plan today, and every one of them is different.
   <b>The only way to know it works on yours is to run it on yours</b>, and that is a short
   conversation.
  </div>
@@ -464,14 +465,12 @@ footer em{font-family:var(--serif)}
 
  <p class="body" style="margin-top:26px">Devices are more software than they used to be,
  software is a growing share of what goes wrong, and the mechanism the industry was given
- to change software faster is a document that nothing checks. <strong>Devices now change after clearance, on purpose, under a document that
- nothing reads.</strong></p>
+ to change software faster is <strong>a document that nothing reads.</strong></p>
 </div></section>
 
 <section><div class="w">
  <h2>What happened when it was attacked</h2>
- <p class="big">This was built by attacking it, publishing what broke, and
- fixing that. <strong>Six rounds. The record of every failure ships with the
+ <p class="big">This was built by attacking it, publishing what broke, and repairing it. <strong>Eight rounds. The record of every failure ships with the
  instrument.</strong></p>
 
  <p class="body">Some of those attacks landed hard. An early version claimed to
@@ -500,8 +499,8 @@ not quoted here.</p>
 
  <p class="body" style="margin-top:26px"><strong>The worse number was published as
  the authoritative one</strong>, and the five failures behind it were repaired and
- re-tested against that same harsher scorer. There is no version of this page
- where the lenient number was the one that got reported.</p>
+ re-tested against that same harsher scorer. The lenient number was never the one
+ reported.</p>
 
  <div class="plain">
   <b>And one thing is still open, so it is written down rather than hidden.</b>
@@ -567,13 +566,13 @@ not quoted here.</p>
 
  <p class="body">A receipt that implies more than it checked launders a human
  judgment into a machine verdict. <strong>That is the failure this exists to
- prevent, so it would be a strange thing to commit.</strong></p>
+ prevent.</strong></p>
 </div></section>
 
 <section><div class="w">
  <h2>What this is not</h2>
- <p class="body">By the time somebody reads this page they have usually been pitched by
- all three of the following, and none of them does this job.</p>
+ <p class="body">Three kinds of product get pitched into this gap. None of them does
+ this job.</p>
 
  <div class="two three notthis">
   <div>
