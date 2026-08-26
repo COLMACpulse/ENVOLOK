@@ -172,9 +172,12 @@ footer em{font-family:var(--serif)}
  
  <div>
  <h1>FDA authorized your PCCP.<br><em>What enforces it?</em></h1>
- <p class="said"><strong>ENVOLOK&trade; is a program you run before a release.</strong>
- Your Predetermined Change Control Plan is the list of modifications FDA cleared you to make without filing again. ENVOLOK reads it, checks a change against it,
- and either clears it or stops it &mdash; then signs a record you can hand an inspector.</p>
+ <p class="said"><strong>ENVOLOK&trade; is a program you run before you ship a modification to a cleared device.</strong>
+ Your Predetermined Change Control Plan is the list of modifications FDA cleared you to make without filing again.
+ You write that plan out once as structured text. ENVOLOK reads the modification's paperwork &mdash;
+ what changed, who says it fits, which tests ran, who approved it &mdash; and returns
+ <b>DEPLOY, BLOCK or UNKNOWN</b>, naming the rule that stopped it. Then it signs a record
+ an inspector can verify without ENVOLOK and without us.</p>
  <div class="underline">Software you run &middot; offline &middot; nothing leaves your network</div>
  </div>
  <div class="hdgm">
@@ -190,7 +193,7 @@ footer em{font-family:var(--serif)}
 <text x="74" y="23" class="tt">envolok — K253281</text>
 <text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
 <text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
-<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 22 checks armed</text>
+<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 24 checks armed</text>
 <text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf \u00b7 asserted by QA/RA</text>
 <text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
 <text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
@@ -207,9 +210,10 @@ footer em{font-family:var(--serif)}
 </div></div>
 
 <section><div class="w">
- <h2>What it actually is</h2>
- <p class="big">A small program &mdash; the engine is under 40 KB of source &mdash; that runs on a machine inside your quality system.
- Not a service, not a portal, not a consultant. There is no account and no server to call.</p>
+ <h2>What it is</h2>
+ <p class="big">A command-line program that runs on the release engineer's laptop, or on a validated
+ workstation, or as a step in your build pipeline. Not a service, not a portal, not a consultant.
+ There is no account to create, nothing to upload, and no server to call.</p>
 
  <div class="two three">
   <div>
@@ -227,10 +231,10 @@ footer em{font-family:var(--serif)}
   </div>
   <div>
    <h3>Three &middot; it clears the change, or stops it</h3>
-   <p>A verdict in well under a second: DEPLOY, BLOCK or UNKNOWN, the failing
-      rule named if there is one, and a signed receipt listing all twenty-three
-      checks <b>and what it did not check</b>. Verifiable by anyone, without
-      ENVOLOK and without us.</p>
+   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists
+      all twenty-four checks it ran <b>and states what it did not check</b>, inside the
+      signed body, so those limits cannot be removed without breaking the signature.
+      Anyone can verify it, without ENVOLOK and without us.</p>
   </div>
  </div>
 
@@ -240,15 +244,16 @@ footer em{font-family:var(--serif)}
 </div></section>
 
 <section><div class="w">
- <h2>Nobody sets out to ship an unauthorized change</h2>
- <p class="big">It happens because the plan is thirty pages of prose, the person who wrote
- it has moved on, and the release meeting is on a Thursday with eleven other things on the
- agenda.</p>
- <p class="body">Somebody says the change is inside the plan. Somebody else agrees. It is
- almost always true. <strong>Almost always is a different thing from provably</strong>, and
- the difference only matters once &mdash; when an inspector is sitting across the table
- asking why this shipped, and the honest answer is that a careful person read a document
- and remembered it correctly.</p>
+ <h2>Almost always right is not the same as provably right</h2>
+ <p class="big">In May 2025 a company acquired a piece of software. Their own transfer contract
+ named Risk Management Report version 4.0. The file that was accepted into the risk record was
+ version 1.1, dated 2016 &mdash; missing every design change made between 2018 and 2025.</p>
+ <p class="body">A version number did not match a version number. That is the entire defect.
+ It went uncaught until FDA wrote it up in a warning letter in May 2026.</p>
+ <p class="body">Before a modification ships, somebody says it is inside the plan and somebody
+ senior agrees. <strong>They are almost always right.</strong> The difference between almost
+ always and provably matters exactly once: two years later, when an inspector asks why this
+ shipped and the record says a careful person read the plan and remembered it correctly.</p>
  <p class="body">FDA is not vague about what a deviation costs.</p>
 
  <blockquote>Deviations from the authorized PCCP &hellip; would generally cause the device
@@ -256,8 +261,9 @@ footer em{font-family:var(--serif)}
  violations of prohibited acts, including, without limitation, seizure or injunction.
  <cite>FDA, Predetermined Change Control Plans for Medical Devices, 22 August 2024</cite></blockquote>
 
- <p class="body">The plan is enforceable. In most companies <strong>nothing enforces it
- except attention</strong>, and attention is the thing you have least of on a Thursday.</p>
+ <p class="body">The plan is enforceable. In most companies <strong>nothing enforces it except
+ someone remembering it correctly under time pressure</strong>, and no version of that scales to
+ the life of a device.</p>
 </div></section>
 
 <section><div class="w">
@@ -289,7 +295,7 @@ footer em{font-family:var(--serif)}
 </div></section>
 
 <section><div class="w">
- <h2>What has actually been run</h2>
+ <h2>What has been run</h2>
  <p class="big">Every claim on this page is one you can check yourself, against
  documents the agency published.</p>
  <p class="body">FDA's guidance publishes eight worked examples. For each device the agency
@@ -408,8 +414,7 @@ footer em{font-family:var(--serif)}
  <div class="plain" style="margin-top:26px">
   <b>What ENVOLOK does not claim.</b> It does not prevent recalls, warning letters or
   consent decrees, and most of what McKinsey measured has nothing to do with change
-  control plans. <b>ENVOLOK addresses one cause among many</b>: a change reaching the
-  field outside the boundary FDA authorized.
+  control plans. <b>ENVOLOK addresses one cause among many</b>: a modification reaching the field outside the boundary FDA authorized.
   <br><br>
   There is no ROI calculator on this page and there will not be one. The numbers above
   are the stakes, not a saving. <b>What ENVOLOK costs is a conversation.</b>
@@ -514,26 +519,38 @@ not quoted here.</p>
 </div></section>
 
 <section><div class="w">
- <h2>What it refuses to claim</h2>
- <p class="big">A machine cannot read intent. It reads a label somebody typed.
- Every tool in this category has that problem. <strong>ENVOLOK is the one that
- says so on the receipt.</strong></p>
+ <h2>The limit</h2>
+ <p class="big">Before a modification ships, someone picks its category from the list your
+ plan permits. ENVOLOK checks that the category is on the list. <strong>It does not check
+ that the modification belongs in the category.</strong></p>
 
- <p class="body">Somebody decides that a change is a user-interface enhancement
- rather than a new indication. That is a human judgment, and no software will ever
- make it. <strong>What software can do is refuse to let the judgment be
+ <p class="body">Nihon Kohden added a Silence Alarms function to a cleared patient monitor.
+ At decision point B2 of their own regulatory assessment &mdash; <em>is it a control mechanism,
+ operating principles, or energy type change?</em> &mdash; they selected <b>No</b>, and filed a
+ letter to file. In June 2026 FDA wrote that Yes was the correct answer and that it required a
+ new 510(k). <strong>ENVOLOK would have cleared that release</strong>, because the category
+ they chose was one the plan permitted.</p>
+
+ <p class="body">The judgment is a person's and no software will make it. What ENVOLOK does is
+ put the category, the written description, and the name of whoever chose it into a signed
+ record that cannot be edited afterward. <strong>The call stays human. It stops being
  anonymous.</strong></p>
+
+ <p class="body">There is a test in the package called <code>K1d</code>. It miscategorizes a
+ modification and confirms the release still goes through. <strong>It passes. It is supposed
+ to pass.</strong></p>
 
  <div class="two three">
   <div>
    <h3>It demands a description</h3>
-   <p>A label on its own is a string. The engine will not grade a change without a
-   written account of what actually changed, and it will not accept "tweak."</p>
+   <p>A category on its own is a value picked off a list. The engine will not grade a
+   modification without a written account of what changed, and it will not
+   accept "tweak."</p>
   </div>
   <div>
    <h3>It demands a name</h3>
-   <p>Somebody has to assert that the label describes the change. Their name and the
-   date go into the signed record. <b>A mislabel is no longer invisible. It is
+   <p>Somebody has to assert that the category describes the modification. Their name and
+   the date go into the signed record. <b>A wrong category is no longer invisible. It is
    permanent and it belongs to someone.</b></p>
   </div>
   <div>
@@ -565,9 +582,8 @@ not quoted here.</p>
  <div class="two three notthis">
   <div>
    <h3>Not a quality management system</h3>
-   <p>Your eQMS <b>records</b> that a change was approved and routes it to the right
-   signatures. It does not read the plan FDA authorized and tell you whether this
-   particular change is inside it. Several of those vendors publish long explainers
+   <p>Your eQMS <b>records</b> that a modification was approved and routes it to the right
+   signatures. It does not read the plan FDA authorized and tell you whether this particular modification is inside it. Several of those vendors publish long explainers
    about PCCPs; every one ends in a demo request.</p>
   </div>
   <div>
@@ -580,14 +596,11 @@ not quoted here.</p>
   <div>
    <h3>Not a regulatory consultant</h3>
    <p>A consultant helps you <b>write</b> the plan and get it authorized. That is real
-   work and worth paying for. Then they leave, the plan goes in a drawer, and every
-   change made under it for the life of the device is checked by somebody remembering
-   what it said.</p>
+   work and worth paying for. Then they leave, the plan goes in a drawer, and every modification made under it for the life of the device is checked by somebody remembering what the plan said.</p>
   </div>
  </div>
 
- <p class="body" style="margin-top:30px">ENVOLOK is the check. It reads the plan that was
- authorized and returns a verdict on the change in front of you.
+ <p class="body" style="margin-top:30px">ENVOLOK is the check. It reads the authorized plan and returns a verdict on the modification in front of you.
  <strong>If your eQMS or your governance platform already does that, do not buy this
  &mdash; ask them to show you the verdict and the rule it cites.</strong></p>
 </div></section>
@@ -619,8 +632,8 @@ not quoted here.</p>
 
 <section class="close"><div class="w" style="padding:70px 30px 66px">
  <h2 style="margin-bottom:14px">Point it at your own PCCP</h2>
- <p class="big" style="margin-bottom:16px">Not a demo of somebody else's device. Yours. The plan FDA authorized, a change you are actually considering, and an answer in front of you the same day.</p>
- <p class="body" style="margin-bottom:10px">Redact whatever you need to &mdash; it reads structure, not secrets. Under NDA if your legal team prefers, which is usually how this goes. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
+ <p class="big" style="margin-bottom:16px">Not a demo of somebody else's device. Yours. The plan FDA authorized, a modification you are weighing right now, and an answer the same day.</p>
+ <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers, which is usually how this goes. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
  <p class="body" style="margin-bottom:8px"><strong>If it disagrees with your own reading of the plan, that is worth knowing too.</strong></p>
  <a class="mail" href="mailto:hello@colmacpulse.com?subject=ENVOLOK">hello@colmacpulse.com</a>
 </div></section>
