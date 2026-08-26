@@ -182,9 +182,11 @@ footer em{font-family:var(--serif)}
  </div>
  <div class="hdgm">
   <div class="dcap">
-   <b>A real run.</b> The plan is UpDoc's, authorized by FDA on 23 December 2025.
-   The four it cleared are changes that plan permits. The three it stopped are
-   limits stated elsewhere in the same FDA document.
+   <b>A real run, seven of twenty-five cases.</b> The plan is UpDoc's, an insulin
+   management app FDA cleared on 23 December 2025. The four that deployed are
+   modifications the plan lists as permitted. The three that blocked are patients
+   and behaviours the same FDA document rules out: type 1 diabetes, under 18,
+   dosing that is not deterministic.
   </div><svg class="dgm" viewBox="0 0 470 472" xmlns="http://www.w3.org/2000/svg" role="img"
  aria-label="Terminal output from a real ENVOLOK run against the authorized PCCP for K253281. 4 changes deployed, 3 blocked.">
 <!-- GENERATED from K253281_RESULTS.json. Do not hand-edit: --check fails. -->
@@ -245,11 +247,8 @@ footer em{font-family:var(--serif)}
 
 <section><div class="w">
  <h2>Almost always right is not the same as provably right</h2>
- <p class="big">In May 2025 a company acquired a piece of software. Their own transfer contract
- named Risk Management Report version 4.0. The file that was accepted into the risk record was
- version 1.1, dated 2016 &mdash; missing every design change made between 2018 and 2025.</p>
- <p class="body">A version number did not match a version number. That is the entire defect.
- It went uncaught until FDA wrote it up in a warning letter in May 2026.</p>
+ <p class="big">On 8 May 2025, <strong>3B Medical, Inc., doing business as Reach Health</strong>, acquired the iCodeConnect software. Appendix A of the Software Copyright Transfer Contract named <strong>Risk Management Report YF-CSP1-3-02, version 4.0</strong>. The file accepted into the risk record was <strong>version 1.1, effective 13 August 2016</strong> &mdash; carrying no assessment of any design change made between 2018 and 2025.</p>
+ <p class="body">A version number did not match a version number. That is the entire defect, and a program checks it in a millisecond. Nobody had one pointed at it, and it went uncaught until FDA wrote it up on 20 May 2026 in warning letter <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">MARCS-CMS 725108</a>. Read it yourself; every detail above is in it.</p>
  <p class="body">Before a modification ships, somebody says it is inside the plan and somebody
  senior agrees. <strong>They are almost always right.</strong> The difference between almost
  always and provably matters exactly once: two years later, when an inspector asks why this
@@ -376,8 +375,7 @@ footer em{font-family:var(--serif)}
  <em>Capturing the value of good quality in medical devices</em>, the McKinsey study
  the device industry has been quoting at itself since 2017. It is the figure your
  own vendors cite in their decks. <strong>McKinsey sells consulting, not change
- control software</strong> &mdash; they have nothing to gain from the number being
- large, which is more than can be said for most sources on this subject.</p>
+ control software</strong> &mdash; they have nothing to gain from the number being large.</p>
 
  <table class="tbl money">
   <tr><th>What McKinsey measured</th><th>Figure</th><th>Whose number</th></tr>
@@ -405,8 +403,7 @@ footer em{font-family:var(--serif)}
  nothing in most years.</strong> Multiplying that percentage by your own revenue
  would be arithmetic, not a forecast.</p>
 
- <p class="body">The first row is the only one that describes a single company, and
- it is the one to sit with. <strong>One event. Up to 11.7 percent of segment revenue,
+ <p class="body">The first row is the only one that describes a single company. <strong>One event. Up to 11.7 percent of segment revenue,
  gone inside a year.</strong> For most manufacturers that line is zero for years at a
  time, which is exactly why the process that prevents it never gets funded &mdash;
  until the year it is not zero, and it is the largest number on the page.</p>
@@ -417,26 +414,25 @@ footer em{font-family:var(--serif)}
   control plans. <b>ENVOLOK addresses one cause among many</b>: a modification reaching the field outside the boundary FDA authorized.
   <br><br>
   There is no ROI calculator on this page and there will not be one. The numbers above
-  are the stakes, not a saving. <b>What ENVOLOK costs is a conversation.</b>
+  are the stakes, not a saving.
  </div>
 </div></section>
 
 <section><div class="w">
  <h2>How many companies this is already true for</h2>
- <p class="body">FDA had authorized <strong>1,451 AI-enabled devices</strong> by the end of
- 2025, and <strong>295 of them cleared in 2025 alone</strong>. Roughly one in ten of those
- 2025 clearances carried an authorized change control plan. Three quarters are radiology.</p>
- <p class="body">The plans that exist are mostly thin. A systematic review of radiology AI
- devices scored PCCP documentation against an eight-point rubric drawn from FDA's own final
- guidance. <strong>The average score was five.</strong> Most authorized plans are missing
- three of the eight things the guidance asks for.</p>
- <p class="body">And the tracking is worse than the plans. The same review found FDA's public
- database listed <strong>25</strong> PCCP-cleared radiology devices while the actual decision
- summaries showed <strong>34</strong> &mdash; <strong>an undercount of more than a
- quarter</strong>, which the authors had to correct by hand.</p>
- <p class="body">If the agency's own database cannot reliably say which devices have a plan,
- <strong>the odds that every release meeting can reliably say what is inside one</strong>
- are not good.</p>
+ <p class="body">A scoping review published in April 2026 went through FDA's AI-enabled device list and the
+ 510(k), De Novo and PMA databases behind it: <strong>1,394 AI submissions, 77.5 percent of them
+ radiology</strong>. Of the radiology devices cleared in 2024 and 2025, <strong>7.1 percent
+ carried an authorized change control plan</strong> &mdash; 31 out of 436.</p>
+ <p class="body">The plans that exist are mostly thin. The same review scored PCCP documentation against an
+ eight-point rubric drawn from FDA's final guidance. <strong>The mean score was five out of
+ eight.</strong> The average authorized plan is missing three of the eight domains the guidance asks for.</p>
+ <p class="body">And the tracking is worse than the plans. FDA's public database listed <strong>25</strong>
+ PCCP-cleared radiology devices. The decision summaries showed <strong>34</strong>. The authors
+ had to correct nine of them by hand.</p>
+ <p class="body"><strong>The agency's own database was wrong about which devices have a plan.</strong> The
+ harder question is what is inside one, and that is asked in a release meeting rather than a
+ database.</p>
 </div></section>
 
 <section><div class="w">
@@ -468,8 +464,8 @@ footer em{font-family:var(--serif)}
 
  <p class="body" style="margin-top:26px">Devices are more software than they used to be,
  software is a growing share of what goes wrong, and the mechanism the industry was given
- to change software faster is a document that nothing checks. <strong>Those three facts
- are pointed at each other.</strong></p>
+ to change software faster is a document that nothing checks. <strong>Devices now change after clearance, on purpose, under a document that
+ nothing reads.</strong></p>
 </div></section>
 
 <section><div class="w">
@@ -607,8 +603,7 @@ not quoted here.</p>
 
 <section id="sources"><div class="w">
  <h2>Check every number yourself</h2>
- <p class="body">Five documents. Between them they contain every figure on this page,
- and none of them are ours.</p>
+ <p class="body">Seven documents. Between them they contain every figure on this page, and none of them are ours.</p>
  <div class="srcs">
   <a class="src" href="https://www.fda.gov/media/180978/download">
    <span class="sn">FDA</span><span class="st">Predetermined Change Control Plans for Medical Devices</span>
@@ -627,13 +622,21 @@ not quoted here.</p>
   <a class="src" href="https://www.sedgwick.com/press-release/u-s-industries-see-more-recalls-and-defective-units-in-2025/">
    <span class="sn">Sedgwick</span><span class="st">US recall activity, 2025 and first half 2026</span>
    <span class="sd">Recall volumes and the year-over-year change.</span></a>
+  <a class="src" href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">
+   <span class="sn">FDA</span><span class="st">Warning Letter MARCS-CMS 725108, 3B Medical dba Reach Health, 20 May 2026</span>
+   <span class="sd">The iCodeConnect acquisition, the Software Copyright Transfer Contract, and the
+   version 1.1 risk management report accepted in place of the version 4.0 the contract named.</span></a>
+  <a class="src" href="https://www.researchsquare.com/article/rs-9411603/v2">
+   <span class="sn">Scoping review</span><span class="st">Evaluating Transparency of Predetermined Change Control Plans in FDA-Cleared Radiology AI Devices</span>
+   <span class="sd">April 2026, PRISMA-ScR. The submission counts, the 7.1 percent adoption rate,
+   the eight-point rubric and its mean of five, and the 25-versus-34 database discrepancy.</span></a>
  </div>
 </div></section>
 
 <section class="close"><div class="w" style="padding:70px 30px 66px">
  <h2 style="margin-bottom:14px">Point it at your own PCCP</h2>
  <p class="big" style="margin-bottom:16px">Not a demo of somebody else's device. Yours. The plan FDA authorized, a modification you are weighing right now, and an answer the same day.</p>
- <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers, which is usually how this goes. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
+ <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
  <p class="body" style="margin-bottom:8px"><strong>If it disagrees with your own reading of the plan, that is worth knowing too.</strong></p>
  <a class="mail" href="mailto:hello@colmacpulse.com?subject=ENVOLOK">hello@colmacpulse.com</a>
 </div></section>
