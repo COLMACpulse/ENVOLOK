@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ENVOLOK — FDA authorized your PCCP. Who checks it?</title>
+<link rel="icon" href="favicon-32.png" sizes="32x32">
+<link rel="icon" href="mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="description" content="FDA authorized your Predetermined Change Control Plan. ENVOLOK checks each change against it before the change ships, and signs a record you can hand an inspector. Runs offline.">
+<meta property="og:title" content="ENVOLOK — FDA authorized your PCCP. Who checks it?">
+<meta property="og:description" content="Your PCCP is the list of changes FDA cleared you to make without filing again. ENVOLOK checks each change against it before it ships, and signs a record you can hand an inspector.">
+<meta property="og:image" content="og.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="og.png">
+<style>
+/* ENVOLOK — set as a technical document, not a SaaS landing page.
+   The buyer reads FDA guidance, submissions and lab reports all day. That is
+   the register they trust. Paper, serif prose, hairline rules, numbered
+   sections. MONOSPACE IS RESERVED FOR MACHINE OUTPUT AND DATA, where it means
+   something. The terminal stays dark because terminals are dark. */
+:root{
+ --paper:#f7f5f1; --card:#fffefc; --ink:#15191d; --body:#3d474f; --mut:#63707b;
+ --rule:#ddd7cc; --hair:#e9e4db;
+ --acc:#1c4e6b; --ok:#0f6f4c; --stop:#a1322a; --warn:#8a6413;
+ --mono:ui-monospace,"SF Mono",Consolas,"DejaVu Sans Mono",monospace;
+ --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+ --serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--body);
+ font:17.5px/1.68 var(--serif);-webkit-font-smoothing:antialiased}
+.w{max-width:880px;margin:auto;padding:0 30px}
+.wide{max-width:1140px;margin:auto;padding:0 30px}
+a{color:var(--acc)}
+p{margin:0 0 20px}
+
+/* masthead */
+.top{border-bottom:1px solid var(--rule);background:var(--card)}
+.topin{display:flex;align-items:center;gap:15px;padding:18px 0}
+.topin .m,.topin .m svg{width:34px;height:34px;display:block;flex:0 0 34px}
+.wm{font:800 19px var(--sans);letter-spacing:.24em;color:var(--ink)}
+.wm b{color:var(--acc);font-weight:800}
+.tm{font-size:9px;letter-spacing:0;vertical-align:super;color:var(--mut);margin-left:2px;font-weight:400}
+.tag{font:13px var(--serif);font-style:italic;color:var(--mut);
+ border-left:1px solid var(--rule);padding-left:15px;margin-left:3px}
+@media(max-width:660px){.tag{display:none}}
+
+/* hero */
+.hero{padding:74px 0 68px;border-bottom:1px solid var(--rule);background:var(--card)}
+.hero .w{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,.98fr);gap:52px;align-items:start}
+@media(max-width:900px){.hero .w{grid-template-columns:1fr;gap:38px}
+ .hero{padding:52px 0 48px}
+ .dcap{max-width:none}}
+.hdgm{min-width:0}
+h1{margin:0;font:800 clamp(33px,4.9vw,53px)/1.07 var(--sans);letter-spacing:-.025em;color:var(--ink)}
+h1 em{font-style:normal;color:var(--acc)}
+.said{margin:26px 0 0;font-size:19px;line-height:1.6;color:var(--body);max-width:40ch}
+.said strong{color:var(--ink);font-weight:700}
+.underline{margin-top:32px;font:10.5px var(--mono);letter-spacing:.19em;color:var(--mut);
+ text-transform:uppercase;border-top:1px solid var(--hair);padding-top:14px}
+
+/* sections, numbered like a technical document */
+section{padding:64px 0;border-bottom:1px solid var(--rule);counter-increment:sec}
+h2{position:relative;margin:0 0 24px;font:800 clamp(25px,3.3vw,35px)/1.16 var(--sans);
+ letter-spacing:-.018em;color:var(--ink)}
+h2::before{content:"§" counter(sec);position:absolute;left:-58px;top:.42em;
+ font:600 12px var(--mono);letter-spacing:.06em;color:var(--mut)}
+@media(max-width:1010px){h2::before{position:static;display:block;margin-bottom:7px}}
+body{counter-reset:sec}
+.big{font-size:20px;line-height:1.6;color:var(--ink);max-width:36em}
+.body{color:var(--body);max-width:36em}
+.body strong{color:var(--ink);font-weight:700}
+
+blockquote{margin:30px 0;padding:20px 26px;border-left:3px solid var(--acc);
+ background:var(--card);font-size:18.5px;line-height:1.55;color:var(--ink);max-width:34em}
+blockquote cite{display:block;margin-top:12px;font:10.5px var(--mono);color:var(--mut);
+ font-style:normal;letter-spacing:.07em}
+
+/* the two-column and three-column blocks */
+.two{display:grid;grid-template-columns:1fr 1fr;margin-top:34px;
+ border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--card)}
+.two > div{padding:26px 28px}
+.two > div:first-child{border-right:1px solid var(--rule)}
+.two h3{margin:0;font:11px var(--mono);letter-spacing:.17em;text-transform:uppercase}
+.two > div:first-child h3{color:var(--stop)}
+.two > div:last-child h3{color:var(--ok)}
+.two ul{margin:14px 0 0;padding:0 0 0 18px;color:var(--body);font-size:15.5px;line-height:1.7}
+.two li{margin-bottom:10px}
+.two li:last-child{margin-bottom:0}
+.two.three{grid-template-columns:1fr 1fr 1fr}
+.two.three > div{border-right:1px solid var(--rule)}
+.two.three > div:last-child{border-right:0}
+.two.three > div:first-child h3,.two.three > div:last-child h3,.two.three h3{
+ color:var(--acc);text-transform:none;font:700 15px var(--sans);letter-spacing:0;margin-bottom:9px}
+.notthis h3{color:var(--stop) !important}
+.two.three p{margin:0;color:var(--body);font-size:15px;line-height:1.62}
+@media(max-width:860px){.two,.two.three{grid-template-columns:1fr}
+ .two>div{border-right:0;border-bottom:1px solid var(--rule)}
+ .two>div:last-child{border-bottom:0}}
+
+/* tables read as data: mono, hairlines, no fills */
+.tbl{width:100%;border-collapse:collapse;margin:26px 0 0;font:14px var(--mono)}
+.tbl th{text-align:left;font-size:9.5px;letter-spacing:.17em;color:var(--mut);
+ text-transform:uppercase;border-bottom:1.5px solid var(--ink);padding:10px 12px;font-weight:400}
+.tbl td{padding:13px 12px;border-bottom:1px solid var(--hair);color:var(--body);vertical-align:top}
+.tbl td.g{color:var(--ok)}
+.tbl tr:last-child td{border-bottom:0}
+.tbl.money td.v{color:var(--ink);font-weight:700;font-size:16px;white-space:nowrap}
+.tbl .sm{color:var(--mut);font-size:11.5px;font-weight:400}
+
+.plain{border:1px solid var(--rule);border-left:3px solid var(--warn);background:var(--card);
+ padding:24px 28px;margin-top:30px;color:var(--body);font-size:16px;max-width:46em}
+.plain b{color:var(--warn)}
+
+.rule{display:flex;gap:38px;flex-wrap:wrap;margin-top:36px;
+ border-top:1px solid var(--rule);padding-top:26px}
+.rule div{min-width:120px}
+.rule b{display:block;font:800 30px var(--mono);color:var(--ink);letter-spacing:-.02em}
+.rule span{font:9.5px var(--mono);letter-spacing:.16em;color:var(--mut);text-transform:uppercase}
+
+/* the terminal keeps its own world */
+.dcap{font:14px/1.6 var(--serif);color:var(--mut);margin-bottom:16px;max-width:44ch}
+.dcap b{color:var(--ink);font-weight:700;font-style:normal}
+.dgm{width:100%;height:auto;display:block;overflow:visible;
+ border-radius:5px;box-shadow:0 2px 14px rgba(20,30,40,.13)}
+.term{fill:#0b1016;stroke:#0b1016;stroke-width:1}
+.tb1,.tb2,.tb3{fill:#3d4a56}
+.tt{font:11px var(--mono);fill:#66798a;letter-spacing:.08em}
+.tl{font:13px var(--mono);fill:#b9cbd8;letter-spacing:0}
+.tl.cmd{fill:#ffffff}
+.tl.d{fill:#6d8496}
+.tl.F{fill:#4fd6a0}
+.tl.B{fill:#ff8b84}
+.tl.ok{fill:#7cc4ff}
+.tl.w{fill:#e0b464}
+
+/* sources */
+.srcs{display:grid;gap:10px;margin-top:24px}
+.src{display:block;border:1px solid var(--rule);background:var(--card);border-radius:3px;
+ padding:17px 22px;text-decoration:none;transition:border-color .15s,box-shadow .15s}
+.src:hover{border-color:var(--acc);box-shadow:0 1px 8px rgba(28,78,107,.10)}
+.sn{display:inline-block;font:9.5px var(--mono);letter-spacing:.19em;color:var(--acc);
+ text-transform:uppercase;min-width:80px}
+.st{color:var(--ink);font-weight:700;font-size:16px;font-family:var(--sans)}
+.sd{display:block;color:var(--mut);font-size:14px;margin-top:5px;padding-left:80px}
+@media(max-width:640px){.sd{padding-left:0}}
+
+/* close */
+.close{background:var(--card)}
+.mail{display:inline-block;margin-top:10px;font:700 20px var(--mono);color:var(--acc);
+ text-decoration:none;border-bottom:2px solid rgba(28,78,107,.3);padding-bottom:2px}
+.mail:hover{border-bottom-color:var(--acc)}
+footer{padding:34px 0 60px;color:var(--mut);font:12.5px/1.85 var(--mono)}
+footer a{color:var(--body)}
+footer em{font-family:var(--serif)}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wide"><div class="topin">
+ <span class="m"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-label="ENVOLOK">
+  <g fill="none" stroke="#1c4e6b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+   <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/><rect x="13" y="26" width="38" height="27" rx="5"/></g>
+  <circle cx="32" cy="39.5" r="6" fill="#0f6f4c"/></svg></span>
+ <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">Checks a modification against the plan FDA authorized</span>
+</div></div></div>
+
+<div class="hero"><div class="w">
+ 
+ <div>
+ <h1>FDA authorized your PCCP.<br><em>Who checks it?</em></h1>
+ <p class="said"><strong>ENVOLOK&trade; is a program you run before you ship a modification to a cleared device.</strong>
+ Your Predetermined Change Control Plan is the list of modifications FDA cleared you to make without filing again.
+ You write that plan out once as structured text. ENVOLOK reads the modification's paperwork &mdash;
+ what changed, who says it fits, which tests ran, who approved it &mdash; and returns
+ <b>DEPLOY, BLOCK or UNKNOWN</b>, naming the rule that stopped it. Then it signs a record
+ an inspector can verify with nothing but a public key.</p>
+ <div class="underline">Software you run &middot; offline &middot; nothing leaves your network</div>
+ </div>
+ <div class="hdgm">
+  <div class="dcap">
+   <b>UpDoc is an insulin management app.</b> FDA cleared it on 23 December 2025 and
+   authorized its change control plan as part of that clearance. ENVOLOK was run
+   against that plan; the terminal shows seven of the twenty-five cases. The four
+   that deployed are modifications the plan permits. The three that blocked are
+   patients and behaviours the same FDA document rules out: type 1 diabetes,
+   patients under 18, and dosing that is not deterministic.
+  </div><svg class="dgm" viewBox="0 0 470 472" xmlns="http://www.w3.org/2000/svg" role="img"
+ aria-label="Terminal output from a real ENVOLOK run against the authorized PCCP for K253281. 4 changes deployed, 3 blocked.">
+<!-- GENERATED from K253281_RESULTS.json. Do not hand-edit: --check fails. -->
+<rect x="1" y="1" width="468" height="470" rx="7" class="term"/>
+<circle cx="22" cy="19" r="4.5" class="tb1"/><circle cx="38" cy="19" r="4.5" class="tb2"/><circle cx="54" cy="19" r="4.5" class="tb3"/>
+<text x="74" y="23" class="tt">envolok — K253281</text>
+<text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
+<text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
+<text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 24 checks armed</text>
+<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf &#183; asserted by QA/RA</text>
+<text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
+<text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
+<text x="20" y="228" class="tl F" xml:space="preserve">  carb counting                  DEPLOY</text>
+<text x="20" y="250" class="tl F" xml:space="preserve">  Apple HealthKit input          DEPLOY</text>
+<text x="20" y="272" class="tl B" xml:space="preserve">  type 1 diabetes                BLOCK</text>
+<text x="20" y="294" class="tl B" xml:space="preserve">  patients under 18              BLOCK</text>
+<text x="20" y="316" class="tl B" xml:space="preserve">  non-deterministic dose         BLOCK</text>
+<text x="20" y="360" class="tl ok" xml:space="preserve">25 of 25 cases · agreed with the authorized plan</text>
+<text x="20" y="382" class="tl d" xml:space="preserve">receipt  ed25519 · signed</text>
+<text x="20" y="426" class="tl w" xml:space="preserve">not verified  that the asserted label describes the change.</text>
+<text x="20" y="448" class="tl w" xml:space="preserve">              A named person asserted it. Recorded, not proven.</text>
+</svg></div>
+</div></div>
+
+<section><div class="w">
+ <h2>What it is</h2>
+ <p class="big">A command-line program that runs on the release engineer's laptop, or on a validated
+ workstation, or as a step in your build pipeline. Not a service, not a portal, not a consultant.
+ There is no account to create, nothing to upload, and no server to call.</p>
+
+ <div class="two three">
+  <div>
+   <h3>One &middot; your PCCP becomes a file</h3>
+   <p>Somebody on your team writes the authorized PCCP out once, as structured
+   text: which modification types are permitted, which metric ranges, which
+   validation tests, who has to approve. An afternoon of work, and it does not
+   change again unless the plan does.</p>
+  </div>
+  <div>
+   <h3>Two &middot; point it at the evidence</h3>
+   <p>The dataset, the candidate build, the validation results, the approval,
+   the release record, the deployed artifact. Files your quality system already
+   produces for every change.</p>
+  </div>
+  <div>
+   <h3>Three &middot; it clears the change, or stops it</h3>
+   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists
+      all twenty-four checks it ran <b>and states what it did not check</b>, inside the
+      signed body, so those limits cannot be removed without breaking the signature.
+      Anyone can check it with a public key. ENVOLOK does not have to be installed, and nobody has to be asked.</p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">It runs on the release engineer's laptop, on a
+ validated workstation, or in your build pipeline. <strong>Nothing about your device leaves
+ your network, because it has no way to send it anywhere.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>Almost always right is not the same as provably right</h2>
+ <p class="big">On 8 May 2025, <strong>3B Medical, Inc., doing business as Reach Health</strong>, acquired the iCodeConnect software. Appendix A of the Software Copyright Transfer Contract named <strong>Risk Management Report YF-CSP1-3-02, version 4.0</strong>. The file accepted into the risk record was <strong>version 1.1, effective 13 August 2016</strong> &mdash; carrying no assessment of any design change made between 2018 and 2025.</p>
+ <p class="body">A version number did not match a version number. That is the entire defect, and a program checks it in a millisecond. Nobody had one pointed at it, and it went uncaught until FDA wrote it up on 20 May 2026 in warning letter <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">MARCS-CMS 725108</a>. Read it yourself; every detail above is in it.</p>
+ <p class="body">Before a modification ships, somebody says it is inside the plan and somebody
+ senior agrees. <strong>They are almost always right.</strong> The difference between almost
+ always and provably matters exactly once: two years later, when an inspector asks why this
+ shipped and the record says a careful person read the plan and remembered it correctly.</p>
+ <p class="body">FDA is not vague about what a deviation costs.</p>
+
+ <blockquote>Deviations from the authorized PCCP &hellip; would generally cause the device
+ to be adulterated and misbranded &hellip; FDA may take legal or regulatory action against
+ violations of prohibited acts, including, without limitation, seizure or injunction.
+ <cite>FDA, Predetermined Change Control Plans for Medical Devices, 22 August 2024</cite></blockquote>
+
+ <p class="body">The plan is enforceable. In most companies <strong>nothing enforces it except
+ someone remembering it correctly under time pressure</strong>, and no version of that scales to
+ the life of a device.</p>
+</div></section>
+
+<section><div class="w">
+ <h2>What changes</h2>
+ <div class="two">
+  <div>
+   <h3>The release meeting today</h3>
+   <ul>
+    <li>Someone recalls what the plan permits.</li>
+    <li>The evidence sits in six places and nobody has opened all six.</li>
+    <li>What survives afterwards is a memo describing a decision.</li>
+    <li>A deviation surfaces in an audit, months later, already in the field.</li>
+   </ul>
+  </div>
+  <div>
+   <h3>The release meeting after</h3>
+   <ul>
+    <li>The plan decides. Not memory, not seniority.</li>
+    <li>Out of scope stops the release and names the rule it broke.</li>
+    <li>You leave with a signed record of exactly what was checked.</li>
+    <li>Anything never measured comes back as unknown, not as a pass.</li>
+   </ul>
+  </div>
+ </div>
+ <p class="body" style="margin-top:30px">That last line matters more than it looks. Most
+ systems record what passed and what failed. <strong>A thing nobody measured is
+ neither</strong>, and calling it a pass is how a gap reaches the field with a signature
+ on it.</p>
+</div></section>
+
+<section><div class="w">
+ <h2>What has been run</h2>
+ <p class="big">Every claim on this page is one you can check yourself, against
+ documents the agency published.</p>
+ <p class="body">FDA's guidance publishes eight worked examples. For each device the agency
+ names the changes that belong in a plan and the changes that do not. That is
+ <strong>47 decisions the regulator has already made, in public</strong>. ENVOLOK was run against every one of
+ them, and agreed with the agency on all 47.</p>
+
+ <p class="body"><strong>What that number measures, stated plainly.</strong> The scope test is set
+ membership: a modification label is checked against the list of categories the
+ plan permits. The suite builds that list from FDA's own in-scope list, so the
+ 47 confirm that the agency's boundary was <em>encoded correctly</em> and that the
+ engine enforces the encoding. They do not show a machine interpreting the
+ guidance. <strong>No machine reads intent, and this one says so on its own
+ receipt.</strong> Example 8 ran in-scope only, three of six or more cases: FDA's
+ out-of-scope list for that device was not retrievable, and a page that scored it
+ as a clean sweep would be hiding the gap rather than reporting it.</p>
+
+ <p class="body"><strong>The computed evidence is the K253281 run below.</strong> Six of those
+ twenty-five cases are not membership tests at all. They compare a measured value
+ against an acceptance range the manufacturer wrote and FDA authorized: a
+ regression suite at 99.4% against a required 100% blocks, one unit conversion
+ error in a thousand against a required zero blocks, a 2% import deviation
+ against a required zero blocks. <strong>That is the instrument computing a
+ verdict, on a real filed plan.</strong></p>
+
+ <table class="tbl">
+  <tr><th>FDA example</th><th>Device</th><th>Result</th></tr>
+  <tr><td>1</td><td>Cancer risk microarray, over the counter</td><td class="g">agreed</td></tr>
+  <tr><td>2</td><td>Potassium electrode, lab analyser</td><td class="g">agreed</td></tr>
+  <tr><td>3</td><td>Polyethylene surgical suture</td><td class="g">agreed</td></tr>
+  <tr><td>4</td><td>Patient monitor with arrhythmia alarms</td><td class="g">agreed</td></tr>
+  <tr><td>5</td><td>Sleep apnea risk app, over the counter</td><td class="g">agreed</td></tr>
+  <tr><td>6</td><td>Antimicrobial susceptibility test</td><td class="g">agreed</td></tr>
+  <tr><td>7</td><td>HLA typing assay</td><td class="g">agreed</td></tr>
+  <tr><td>8</td><td>Implantable pulse generator</td><td class="g">agreed, in-scope only</td></tr>
+ </table>
+
+ <div class="rule">
+  <div><b>47 / 47</b><span>agreed with FDA, Ex.8 in-scope only</span></div>
+  <div><b>8</b><span>device classes</span></div>
+  <div><b>25 / 25</b><span>on a real authorized plan</span></div>
+  <div><b>0</b><span>accounts to create</span></div>
+  <div><b>0</b><span>network calls</span></div>
+ </div>
+
+ <p class="body" style="margin-top:38px">Software, diagnostics, implantables, surgical
+ hardware. Your own engineer can run the whole thing on a laptop with the wifi
+ off and check every answer against the FDA documents themselves.</p>
+
+ <div class="plain">
+  <b>And one that was not a teaching example.</b> On 23 December 2025 FDA cleared UpDoc,
+  a type 2 diabetes insulin management app, and authorized its change control plan as part
+  of that clearance. The plan is printed in FDA's own decision summary: five categories of
+  permitted change, fourteen named modifications, and acceptance criteria the company wrote
+  and FDA accepted &mdash; a 100% regression pass rate, zero tolerance on imported values,
+  a unit conversion error rate of zero.
+  <br><br>
+  ENVOLOK was run against it. <b>25 of 25.</b> Every authorized change deployed. Every limit
+  stated elsewhere in that document blocked. A regression suite at 99.4% blocked, because
+  the plan said 100%.
+  <br><br>
+  And the obvious objection &mdash; that whoever wrote the rules also wrote the test
+  &mdash; has an answer. <b>Every one of the twelve rules encoded from
+  that plan was traced word for word back to FDA's own text. Twelve found, none
+  invented</b>, and the transcription ships with the instrument so you can check the
+  tracing yourself.
+  <br><br>
+  <b>What it still does not prove.</b> That is one company's plan, not yours. Across all FDA panels 170
+  devices carry an authorized plan today, and every one of them is different.
+  <b>The only way to know it works on yours is to run it on yours</b>, and that is a short
+  conversation.
+ </div>
+</div></section>
+
+<section><div class="w">
+ <h2>What a deviation costs</h2>
+ <p class="body">These are not ENVOLOK's numbers. They come from
+ <em>Capturing the value of good quality in medical devices</em>, the McKinsey study
+ the device industry has been quoting at itself since 2017. It is the figure your
+ own vendors cite in their decks. <strong>McKinsey sells consulting, not change
+ control software</strong> &mdash; they have nothing to gain from the number being large.</p>
+
+ <table class="tbl money">
+  <tr><th>What McKinsey measured</th><th>Figure</th><th>Whose number</th></tr>
+  <tr><td>A major recall or other non-routine quality event<br>
+      <span class="sm">what it can cost one manufacturer, inside a year</span></td>
+      <td class="v">up to 11.7%<br><span class="sm">of segment revenue,<br>near $300M</span></td>
+      <td class="sm">a single company</td></tr>
+  <tr><td>FDA device-surveillance inspections leading to official<br>
+      <span class="sm">or voluntary action, 2010&ndash;2015</span></td>
+      <td class="v">about 50%</td><td class="sm">the inspected</td></tr>
+  <tr><td>Non-routine external quality failures<br>
+      <span class="sm">recalls, 483s, warning letters, consent decrees,<br>import bans, litigation</span></td>
+      <td class="v">1.9 &ndash; 2.5%<br><span class="sm">of annual sales</span></td>
+      <td class="sm">industry-wide</td></tr>
+  <tr><td>The same events, totalled<br>
+      <span class="sm">up to 3.8% of sales at the high end</span></td>
+      <td class="v">$7.0B &ndash; $8.5B<br><span class="sm">per year</span></td>
+      <td class="sm">industry-wide</td></tr>
+ </table>
+
+ <p class="body" style="margin-top:26px"><strong>Read the last two rows carefully,
+ because they are easy to misuse.</strong> The 1.9 to 2.5 percent is an industry
+ average, and McKinsey is explicit that it is concentrated in the companies whose
+ quality systems did not close the loop. <strong>Most manufacturers carry close to
+ nothing in most years.</strong> Multiplying that percentage by your own revenue
+ would be arithmetic, not a forecast.</p>
+
+ <p class="body">The first row is the only one that describes a single company. <strong>One event. Up to 11.7 percent of segment revenue,
+ gone inside a year.</strong> For most manufacturers that line is zero for years at a
+ time, which is exactly why the process that prevents it never gets funded &mdash;
+ until the year it is not zero, and it is the largest number on the page.</p>
+
+ <div class="plain" style="margin-top:26px">
+  <b>What ENVOLOK does not claim.</b> It does not prevent recalls, warning letters or
+  consent decrees, and most of what McKinsey measured has nothing to do with change
+  control plans. <b>ENVOLOK addresses one cause among many</b>: a modification reaching the field outside the boundary FDA authorized.
+  <br><br>
+  There is no ROI calculator on this page and there will not be one. The numbers above
+  are the stakes, not a saving.
+ </div>
+</div></section>
+
+<section><div class="w">
+ <h2>How many companies this is already true for</h2>
+ <p class="body">A scoping review published in April 2026 went through FDA's AI-enabled device list and the
+ 510(k), De Novo and PMA databases behind it: <strong>1,394 AI submissions, 77.5 percent of them
+ radiology</strong>. Of the radiology devices cleared in 2024 and 2025, <strong>7.1 percent
+ carried an authorized change control plan</strong> &mdash; 31 out of 436.</p>
+ <p class="body">The plans that exist are mostly thin. The same review scored PCCP documentation against an
+ eight-point rubric drawn from FDA's final guidance. <strong>The mean score was five out of
+ eight.</strong> The average authorized plan is missing three of the eight domains the guidance asks for.</p>
+ <p class="body">And the tracking is worse than the plans. FDA's public database listed <strong>25</strong>
+ PCCP-cleared radiology devices. The decision summaries showed <strong>34</strong>. The authors
+ had to correct nine of them by hand.</p>
+ <p class="body"><strong>The agency's own database was wrong about which devices have a plan.</strong> The
+ harder question is what is inside one, and that is asked in a release meeting rather than a
+ database.</p>
+</div></section>
+
+<section><div class="w">
+ <h2>Why this is a problem now, and was not one three years ago</h2>
+ <p class="body">Congress created these plans in 2022. FDA finished the guidance in 2024
+ and 2025. Most quality systems in this industry were designed before any of that
+ existed, by people who are now carrying an obligation that did not exist when they
+ built the process.</p>
+ <p class="body">An authorized PCCP is not a one-time filing. <strong>It is a standing
+ commitment that lasts as long as the device is on the market</strong>, and every change
+ made under it has to be shown to be inside it. Not once. Every time.</p>
+
+ <table class="tbl money" style="margin-top:34px">
+  <tr><th>Meanwhile</th><th>Figure</th><th>When</th></tr>
+  <tr><td>Class I recalls &mdash; the category meaning serious injury or death<br>
+      <span class="sm">highest level recorded in fifteen years</span></td>
+      <td class="v">15-year high</td><td class="sm">2024</td></tr>
+  <tr><td><b style="color:var(--ink)">Software issues, as a cause of device recalls</b><br>
+      <span class="sm">31 of the 236 US device recalls that quarter, second only<br>
+      to device failure at 48</span></td>
+      <td class="v">2nd leading<br>cause</td><td class="sm">Q1 2025</td></tr>
+  <tr><td>Device failure overtook manufacturing defects<br>
+      <span class="sm">as the leading cause, first time in over five years</span></td>
+      <td class="v">11.1%<br><span class="sm">of device recalls</span></td><td class="sm">2024</td></tr>
+  <tr><td>Medical device units recalled<br>
+      <span class="sm">against the same period a year earlier</span></td>
+      <td class="v">up over 500%</td><td class="sm">first half<br>2026</td></tr>
+ </table>
+
+ <p class="body" style="margin-top:26px">Devices are more software than they used to be,
+ software is a growing share of what goes wrong, and the mechanism the industry was given
+ to change software faster is <strong>a document that nothing reads.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>What happened when it was attacked</h2>
+ <p class="big">This was built by attacking it, publishing what broke, and repairing it. <strong>Eight rounds. The record of every failure ships with the
+ instrument.</strong></p>
+
+ <p class="body">Some of those attacks landed hard. An early version claimed to
+ enforce scope; a red team showed the scope test was a label in a list, and that
+ a mislabelled out-of-scope change deployed. <strong>That claim was withdrawn and
+ the product got smaller</strong> &mdash; it now demands a written description, a
+ named asserter and a boundary bound to its source, and the receipt says what it
+ did not check.</p>
+
+ <p class="body">The clearest example is a scoring one. A hostile layout test was
+ scored by one method and passed most cases. <strong>The scorer was then rebuilt
+ to be harsher &mdash; rejecting truncated and contaminated rule text &mdash; and
+ the same run scored worse.</strong></p>
+
+ <table class="tbl">
+ <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
+ <tr><td>Cases fully passing across five hostile document layouts</td><td>3 / 5</td><td>0 / 5</td></tr>
+ <tr><td>After repair, re-tested against the strict scorer</td><td>&mdash;</td><td>5 / 5</td></tr>
+</table>
+<p class="body" style="font-size:.92em"><strong>What you can check, and what you cannot.</strong> The
+strict <em>0 / 5</em> is written into <code>layout_authority/REPORT.md</code> in the release, and the
+repaired <em>5 / 5</em> is reproducible: run <code>layout_authority/run_v20_closure_gauntlet.py</code>
+and it prints all five cases with the strict criteria applied. The lenient run belongs to a v1.9 tree
+that is not shipped, so its per-rule counts are <strong>not verifiable from the package</strong> and are
+not quoted here.</p>
+
+ <p class="body" style="margin-top:26px"><strong>The worse number was published as
+ the authoritative one</strong>, and the five failures behind it were repaired and
+ re-tested against that same harsher scorer. The lenient number was never the one
+ reported.</p>
+
+ <div class="plain">
+  <b>And one thing is still open, so it is written down rather than hidden.</b>
+  There is a research path that reads change control plans directly out of PDFs.
+  Its layout handling is solid. <b>Its rule detection is not</b> &mdash; it keys on
+  document formatting rather than meaning, so it can miss a genuine rule written as
+  a numbered list and can accept a sentence that merely looks like one.
+  <b>That path is marked candidate-only in the code and is not part of what
+  ENVOLOK does today.</b>
+ </div>
+</div></section>
+
+<section><div class="w">
+ <h2>The limit</h2>
+ <p class="big">Before a modification ships, someone picks its category from the list your
+ plan permits. ENVOLOK checks that the category is on the list. <strong>It does not check
+ that the modification belongs in the category.</strong></p>
+
+ <p class="body">Nihon Kohden added a Silence Alarms function to a cleared patient monitor.
+ At decision point B2 of their own regulatory assessment &mdash; <em>is it a control mechanism,
+ operating principles, or energy type change?</em> &mdash; they selected <b>No</b>, and filed a
+ letter to file. In June 2026 FDA wrote that Yes was the correct answer and that it required a
+ new 510(k). <strong>ENVOLOK would have cleared that release</strong>, because the category
+ they chose was one the plan permitted.</p>
+
+ <p class="body">The judgment is a person's and no software will make it. What ENVOLOK does is
+ put the category, the written description, and the name of whoever chose it into a signed
+ record that cannot be edited afterward. <strong>The call stays human. It stops being
+ anonymous.</strong></p>
+
+ <p class="body">There is a test in the package called <code>K1d</code>. It miscategorizes a
+ modification and confirms the release still goes through. <strong>It passes. It is supposed
+ to pass.</strong></p>
+
+ <div class="two three">
+  <div>
+   <h3>It demands a description</h3>
+   <p>A category on its own is a value picked off a list. The engine will not grade a
+   modification without a written account of what changed, and it will not
+   accept "tweak."</p>
+  </div>
+  <div>
+   <h3>It demands a name</h3>
+   <p>Somebody has to assert that the category describes the modification. Their name and
+   the date go into the signed record. <b>A wrong category is no longer invisible. It is
+   permanent and it belongs to someone.</b></p>
+  </div>
+  <div>
+   <h3>It demands provenance</h3>
+   <p>The boundary has to name the document it came from, with a hash and an
+   attestation, or nothing is graded at all. <b>A boundary with no provenance is a
+   boundary somebody typed.</b></p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">And the receipt carries its own limits
+ <strong>inside the signed body</strong>, so they cannot be stripped without breaking
+ the signature. In plain words, on every record it produces:</p>
+
+ <blockquote>Not verified: that the asserted label correctly describes the actual
+ change. A named person asserted that. It is recorded here, not proven.
+ <cite>from the receipt schema, on every ENVOLOK verdict</cite></blockquote>
+
+ <p class="body">A receipt that implies more than it checked launders a human
+ judgment into a machine verdict. <strong>That is the failure this exists to
+ prevent.</strong></p>
+</div></section>
+
+<section><div class="w">
+ <h2>What this is not</h2>
+ <p class="body">Three kinds of product get pitched into this gap. None of them does
+ this job.</p>
+
+ <div class="two three notthis">
+  <div>
+   <h3>Not a quality management system</h3>
+   <p>Your eQMS <b>records</b> that a modification was approved and routes it to the right
+   signatures. It does not read the plan FDA authorized and tell you whether this particular modification is inside it. Several of those vendors publish long explainers
+   about PCCPs; every one ends in a demo request.</p>
+  </div>
+  <div>
+   <h3>Not an AI governance platform</h3>
+   <p>Gartner named that market in June 2026 and it is a real one, aimed at NIST AI RMF,
+   ISO 42001 and the EU AI Act. It governs AI in general. <b>It does not open your
+   authorized PCCP and check a release against it</b>, and among the leaders, enforcement
+   at the point of deployment is still described as roadmap.</p>
+  </div>
+  <div>
+   <h3>Not a regulatory consultant</h3>
+   <p>A consultant helps you <b>write</b> the plan and get it authorized. That is real
+   work and worth paying for. Then they leave, the plan goes in a drawer, and every modification made under it for the life of the device is checked by somebody remembering what the plan said.</p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">ENVOLOK is the check. It reads the authorized plan and returns a verdict on the modification in front of you.
+ <strong>If your eQMS or your governance platform already does that, do not buy this
+ &mdash; ask them to show you the verdict and the rule it cites.</strong></p>
+</div></section>
+
+<section id="sources"><div class="w">
+ <h2>Check every number yourself</h2>
+ <p class="body">Seven documents. Between them they hold every figure on this page. Not one was published by ENVOLOK.</p>
+ <div class="srcs">
+  <a class="src" href="https://www.fda.gov/media/180978/download">
+   <span class="sn">FDA</span><span class="st">Predetermined Change Control Plans for Medical Devices</span>
+   <span class="sd">The guidance. All eight worked examples are in Section VIII.</span></a>
+  <a class="src" href="https://www.accessdata.fda.gov/cdrh_docs/reviews/K253281.pdf">
+   <span class="sn">FDA</span><span class="st">Decision summary, K253281</span>
+   <span class="sd">UpDoc, cleared 23 December 2025. The authorized PCCP is Section VI.C &mdash; the plan in the terminal above.</span></a>
+  <a class="src" href="https://www.mckinsey.com/industries/pharmaceuticals-and-medical-products/our-insights/capturing-the-value-of-good-quality-in-medical-devices">
+   <span class="sn">McKinsey</span><span class="st">Capturing the value of good quality in medical devices</span>
+   <span class="sd">2017. The management consultancy's study of what poor quality costs device
+   manufacturers, and the source of every cost figure above. Still the most complete one
+   published.</span></a>
+  <a class="src" href="https://www.advamed.org/member-center/resource-library/state-of-the-nation-2025-global-medical-device-recall-index-report/">
+   <span class="sn">Sedgwick</span><span class="st">State of the Nation Global Medical Device Recall Index</span>
+   <span class="sd">2025 edition. Class I at a 15-year peak; software and device failure as leading causes.</span></a>
+  <a class="src" href="https://www.sedgwick.com/press-release/u-s-industries-see-more-recalls-and-defective-units-in-2025/">
+   <span class="sn">Sedgwick</span><span class="st">US recall activity, 2025 and first half 2026</span>
+   <span class="sd">Recall volumes and the year-over-year change.</span></a>
+  <a class="src" href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">
+   <span class="sn">FDA</span><span class="st">Warning Letter MARCS-CMS 725108, 3B Medical dba Reach Health, 20 May 2026</span>
+   <span class="sd">The iCodeConnect acquisition, the Software Copyright Transfer Contract, and the
+   version 1.1 risk management report accepted in place of the version 4.0 the contract named.</span></a>
+  <a class="src" href="https://www.researchsquare.com/article/rs-9411603/v2">
+   <span class="sn">Scoping review</span><span class="st">Evaluating Transparency of Predetermined Change Control Plans in FDA-Cleared Radiology AI Devices</span>
+   <span class="sd">April 2026, PRISMA-ScR. The submission counts, the 7.1 percent adoption rate,
+   the eight-point rubric and its mean of five, and the 25-versus-34 database discrepancy.</span></a>
+ </div>
+</div></section>
+
+<section class="close"><div class="w" style="padding:70px 30px 66px">
+ <h2 style="margin-bottom:14px">Point it at your own PCCP</h2>
+ <p class="big" style="margin-bottom:16px">Not a demo of somebody else's device. Yours. The plan FDA authorized, a modification you are weighing right now, and an answer the same day.</p>
+ <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
+ <p class="body" style="margin-bottom:8px"><strong>If it disagrees with your own reading of the plan, that is worth knowing too.</strong></p>
+ <a class="mail" href="mailto:hello@colmacpulse.com?subject=ENVOLOK">hello@colmacpulse.com</a>
+</div></section>
+
+<footer><div class="w">
+ ENVOLOK is built by Range Art &amp; Design LLC, a California limited liability company.<br>
+ &copy; 2026 Range Art &amp; Design LLC. ENVOLOK&trade; is an unregistered trademark of
+ Range Art &amp; Design LLC, claimed under common law.<br><br>
+The cost and recall figures describe the medical device industry, not ENVOLOK, and no saving
+ is claimed from any of them.<br><br>
+ Quotation and examples: FDA, <em>Predetermined Change Control Plans for Medical Devices</em>,
+ draft guidance, 22 August 2024, Section VIII. Real authorized plan: FDA 510(k) decision
+ summary K253281, UpDoc Inc., cleared 23 December 2025, Section VI.C. Device and clearance
+ counts: FDA AI-enabled device list through December 2025. Documentation scoring and database
+ undercount: systematic scoping review of PCCP transparency in FDA-cleared radiology AI
+ devices, 2026. Statutory basis: FD&amp;C Act section 515C, added by FDORA section 3308.<br><br>
+ This describes a software tool. It is not regulatory advice, it is not a submission
+ service, and it does not determine substantial equivalence. Those are FDA's to make.
+</div></footer>
+
+</body>
+</html>
