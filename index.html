@@ -172,15 +172,15 @@ footer em{font-family:var(--serif)}
  
  <div>
  <h1>FDA authorized your PCCP.<br><em>Who checks it?</em></h1>
- <p class="said"><strong>ENVOLOK&trade; is a program you run before you ship a modification to a cleared device.</strong>
- Your Predetermined Change Control Plan is the list of modifications FDA cleared you to make without filing again.
- Somebody on your team writes that plan out once as structured text and puts their name to it.
- <strong>ENVOLOK executes that encoded boundary.</strong> It reads the modification's
+ <p class="said"><strong>ENVOLOK&trade; runs before a modification ships to a cleared device.</strong>
+ A Predetermined Change Control Plan is the list of modifications FDA cleared a manufacturer to
+ make without filing again. That plan is written out once as structured text and attested by a
+ named person, and <strong>ENVOLOK executes the encoded boundary.</strong> It reads the modification's
  paperwork &mdash; what changed, who says it fits, which tests ran, who approved it &mdash;
  and returns
  <b>DEPLOY, BLOCK or UNKNOWN</b>, naming the rule that stopped it. Then it signs a record
  whose integrity anyone can verify with the public key.</p>
- <div class="underline">Software you run &middot; offline &middot; nothing leaves your network</div>
+ <div class="underline">Software you run &middot; offline &middot; nothing leaves the network it runs on</div>
  </div>
  <div class="hdgm">
   <div class="dcap">
@@ -222,11 +222,11 @@ footer em{font-family:var(--serif)}
 
  <div class="two three">
   <div>
-   <h3>One &middot; your PCCP becomes a file</h3>
-   <p>Somebody on your team writes the authorized PCCP out once, as structured
-   text: which modification types are permitted, which metric ranges, which
-   validation tests, who has to approve. An afternoon of work, and it does not
-   change again unless the plan does.</p>
+   <h3>One &middot; the PCCP becomes a file</h3>
+   <p>The authorized plan is written out once as structured text: which
+   modification types are permitted, which metric ranges, which validation
+   tests, which approval roles. It is regulatory work rather than engineering
+   work, and the file does not change again unless the plan does.</p>
   </div>
   <div>
    <h3>Two &middot; point it at the evidence</h3>
@@ -355,8 +355,8 @@ footer em{font-family:var(--serif)}
  </div>
 
  <p class="body" style="margin-top:38px">Software, diagnostics, implantables, surgical
- hardware. Your own engineer can run the whole thing on a laptop with the wifi
- off and check every answer against the FDA documents themselves.</p>
+ hardware. The whole suite runs on a laptop with the wifi off, and every answer
+ can be checked against the FDA documents themselves.</p>
 
  <div class="plain">
   <b>And one that was not a teaching example.</b> On 23 December 2025 FDA cleared UpDoc,
@@ -378,8 +378,7 @@ footer em{font-family:var(--serif)}
   <br><br>
   <b>What it still does not prove.</b> That is one company's plan, not yours. Across all FDA panels 170
   devices carry an authorized plan today, and every one of them is different.
-  <b>The only way to know it works on yours is to run it on yours</b>, and that is a short
-  conversation.
+  <b>The only way to know it works on a given plan is to run it on that plan.</b>
  </div>
 </div></section>
 
@@ -608,8 +607,8 @@ not quoted here.</p>
   </div>
  </div>
 
- <p class="body" style="margin-top:30px">ENVOLOK is the check. It executes the boundary your team encoded and attested from the
-   authorized plan, and returns a verdict on the modification in front of you.
+ <p class="body" style="margin-top:30px">ENVOLOK is the check. It executes the boundary a named person encoded and attested from
+   the authorized plan, and returns a verdict on the modification under review.
  <strong>If your eQMS or your governance platform already does that, do not buy this
  &mdash; ask them to show you the verdict and the rule it cites.</strong></p>
 </div></section>
@@ -648,7 +647,7 @@ not quoted here.</p>
 
 <section class="close"><div class="w" style="padding:70px 30px 66px">
  <h2 style="margin-bottom:14px">Point it at your own PCCP</h2>
- <p class="big" style="margin-bottom:16px">Not a demo of somebody else's device. Yours. The plan FDA authorized, a modification you are weighing right now, and an answer the same day.</p>
+ <p class="big" style="margin-bottom:16px">Not a demo on another company's device. The plan FDA authorized for one of yours, a modification actually under review, and a verdict that can be checked line by line against the plan.</p>
  <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
  <p class="body" style="margin-bottom:8px"><strong>If it disagrees with your own reading of the plan, that is worth knowing too.</strong></p>
  <a class="mail" href="mailto:hello@envolok.com?subject=ENVOLOK">hello@envolok.com</a>
