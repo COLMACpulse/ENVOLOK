@@ -174,8 +174,9 @@ footer em{font-family:var(--serif)}
  <h1>FDA authorized your PCCP.<br><em>Who checks it?</em></h1>
  <p class="said"><strong>ENVOLOK&trade; runs before a modification ships to a cleared device.</strong>
  A Predetermined Change Control Plan is the list of modifications FDA cleared a manufacturer to
- make without filing again. That plan is written out once as structured text and attested by a
- named person, and <strong>ENVOLOK executes the encoded boundary.</strong> It reads the modification's
+ make without filing again. Your team turns that authorized plan into rules ENVOLOK can check,
+ and signs off that the rules match the source. <strong>ENVOLOK then applies the same boundary to
+ every modification.</strong> It reads the modification's
  paperwork &mdash; what changed, who says it fits, which tests ran, who approved it &mdash;
  and returns
  <b>DEPLOY, BLOCK or UNKNOWN</b>, naming the rule that stopped it. Then it signs a record
@@ -223,10 +224,10 @@ footer em{font-family:var(--serif)}
  <div class="two three">
   <div>
    <h3>One &middot; the PCCP becomes a file</h3>
-   <p>The authorized plan is written out once as structured text: which
-   modification types are permitted, which metric ranges, which validation
-   tests, which approval roles. It is regulatory work rather than engineering
-   work, and the file does not change again unless the plan does.</p>
+   <p>Your team encodes the authorized plan once: which modification types are
+   permitted, which metric ranges apply, which validation tests are required, and
+   who must approve them. <b>The file changes only when the authorized plan
+   changes.</b></p>
   </div>
   <div>
    <h3>Two &middot; point it at the evidence</h3>
@@ -261,12 +262,19 @@ footer em{font-family:var(--serif)}
 
 <section><div class="w">
  <h2>Almost always right is not the same as provably right</h2>
- <p class="big">On 8 May 2025, <strong>3B Medical, Inc., doing business as Reach Health</strong>, acquired the iCodeConnect software. Appendix A of the Software Copyright Transfer Contract named <strong>Risk Management Report YF-CSP1-3-02, version 4.0</strong>. The file accepted into the risk record was <strong>version 1.1, effective 13 August 2016</strong> &mdash; carrying no assessment of any design change made between 2018 and 2025.</p>
- <p class="body">A version number did not match a version number. That is the entire defect, and a program checks it in a millisecond. Nobody had one pointed at it, and it went uncaught until FDA wrote it up on 20 May 2026 in warning letter <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">MARCS-CMS 725108</a>. Read it yourself; every detail above is in it.</p>
- <p class="body">Before a modification ships, somebody says it is inside the plan and somebody
- senior agrees. <strong>They are almost always right.</strong> The difference between almost
- always and provably matters exactly once: two years later, when an inspector asks why this
- shipped and the record says a careful person read the plan and remembered it correctly.</p>
+ <p class="big">When <strong>3B Medical</strong> acquired the iCodeConnect software, its
+ Software Copyright Transfer Contract named <strong>Risk Management Report YF-CSP1-3-02,
+ version 4.0</strong>. The risk record instead contained <strong>version 1.1, effective 13
+ August 2016</strong> &mdash; a document that could not account for design changes made
+ years later.</p>
+ <p class="big" style="margin-top:14px"><strong>A version number did not match a version
+ number.</strong></p>
+ <p class="body">A program checks that in a millisecond. Nobody had one pointed at it. FDA
+ identified the discrepancy in a May 2026 <a href="https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/3b-medical-inc-dba-reach-health-inc-725108-05202026">warning
+ letter</a>.</p>
+ <p class="body">Before a modification ships, somebody decides it is inside the authorized
+ plan and somebody senior agrees. <strong>Most of the time they will be right.</strong> The
+ problem is the one time they are not.</p>
  <p class="body">FDA is not vague about what a deviation costs.</p>
 
  <blockquote>Deviations from the authorized PCCP &hellip; would generally cause the device
@@ -316,15 +324,12 @@ footer em{font-family:var(--serif)}
  <strong>47 decisions the regulator has already made, in public</strong>. ENVOLOK was run against every one of
  them, and agreed with the agency on all 47.</p>
 
- <p class="body"><strong>What that number measures, stated plainly.</strong> The scope test is set
- membership: a modification label is checked against the list of categories the
- plan permits. The suite builds that list from FDA's own in-scope list, so the
- 47 confirm that the agency's boundary was <em>encoded correctly</em> and that the
- engine enforces the encoding. They do not show a machine interpreting the
- guidance. <strong>No machine reads intent, and this one says so on its own
- receipt.</strong> Example 8 ran in-scope only, three of six or more cases: FDA's
- out-of-scope list for that device was not retrievable, and a page that scored it
- as a clean sweep would be hiding the gap rather than reporting it.</p>
+ <p class="body"><strong>What that number measures, stated plainly.</strong> The 47 tests
+ confirm that FDA's published boundaries were encoded correctly and that ENVOLOK enforced
+ those boundaries correctly. <strong>They do not show a machine interpreting FDA guidance.
+ No machine reads intent, and this one says so on its own receipt.</strong> Example 8 ran
+ in-scope only, three of six or more cases: FDA's out-of-scope list for that device was
+ not retrievable, so ENVOLOK does not count what it could not test.</p>
 
  <p class="body"><strong>The computed evidence is the K253281 run below.</strong> Six of those
  twenty-five cases are not membership tests at all. They compare a measured value
@@ -359,25 +364,20 @@ footer em{font-family:var(--serif)}
  can be checked against the FDA documents themselves.</p>
 
  <div class="plain">
-  <b>And one that was not a teaching example.</b> On 23 December 2025 FDA cleared UpDoc,
-  a type 2 diabetes insulin management app, and authorized its change control plan as part
-  of that clearance. The plan is printed in FDA's own decision summary: five categories of
-  permitted change, fourteen named modifications, and acceptance criteria the company wrote
-  and FDA accepted &mdash; a 100% regression pass rate, zero tolerance on imported values,
-  a unit conversion error rate of zero.
+  <b>And one that was not a teaching example.</b> FDA cleared UpDoc, an insulin management
+  app, on 23 December 2025 and authorized its change control plan as part of that clearance.
+  The plan is printed in FDA's own decision summary, with acceptance criteria the company
+  wrote and FDA accepted: a 100% regression pass rate, zero tolerance on imported values, a
+  unit conversion error rate of zero.
   <br><br>
-  ENVOLOK was run against it. <b>25 of 25.</b> Every authorized change deployed. Every limit
-  stated elsewhere in that document blocked. A regression suite at 99.4% blocked, because
-  the plan said 100%.
+  ENVOLOK was run against it. <b>25 of 25.</b> Every authorized change deployed, every limit
+  blocked. <b>A regression suite at 99.4% blocked, because the plan said 100%.</b>
   <br><br>
-  And the obvious objection &mdash; that whoever wrote the rules also wrote the test
-  &mdash; has an answer. <b>Every one of the twelve rules encoded from
-  that plan was traced word for word back to FDA's own text. Twelve found, none
-  invented</b>, and the transcription ships with the instrument so you can check the
-  tracing yourself.
+  The obvious objection is that whoever wrote the rules also wrote the test.
+  <b>Every rule encoded from that plan was traced word for word back to FDA's own text, and
+  the transcription ships with the instrument so you can check it.</b>
   <br><br>
-  <b>What it still does not prove.</b> That is one company's plan, not yours. Across all FDA panels 170
-  devices carry an authorized plan today, and every one of them is different.
+  <b>What it still does not prove.</b> That is one company's plan, not yours.
   <b>The only way to know it works on a given plan is to run it on that plan.</b>
  </div>
 </div></section>
@@ -386,9 +386,8 @@ footer em{font-family:var(--serif)}
  <h2>What a deviation costs</h2>
  <p class="body">These are not ENVOLOK's numbers. They come from
  <em>Capturing the value of good quality in medical devices</em>, the McKinsey study
- the device industry has been quoting at itself since 2017. It is the figure your
- own vendors cite in their decks. <strong>McKinsey sells consulting, not change
- control software</strong> &mdash; they have nothing to gain from the number being large.</p>
+ the device industry has been quoting at itself since 2017. <strong>McKinsey sells
+ consulting, not change control software.</strong></p>
 
  <table class="tbl money">
   <tr><th>What McKinsey measured</th><th>Figure</th><th>Whose number</th></tr>
@@ -409,43 +408,30 @@ footer em{font-family:var(--serif)}
       <td class="sm">industry-wide</td></tr>
  </table>
 
- <p class="body" style="margin-top:26px"><strong>Read the last two rows carefully,
- because they are easy to misuse.</strong> The 1.9 to 2.5 percent is an industry
- average, and McKinsey is explicit that it is concentrated in the companies whose
- quality systems did not close the loop. <strong>Most manufacturers carry close to
- nothing in most years.</strong> Multiplying that percentage by your own revenue
- would be arithmetic, not a forecast.</p>
-
- <p class="body">The first row is the only one that describes a single company. <strong>One event. Up to 11.7 percent of segment revenue,
- gone inside a year.</strong> For most manufacturers that line is zero for years at a
- time, which is exactly why the process that prevents it never gets funded &mdash;
- until the year it is not zero, and it is the largest number on the page.</p>
+ <p class="body" style="margin-top:26px">The first row is the only one that describes a
+ single company. <strong>One event. Up to 11.7 percent of segment revenue, gone inside a
+ year.</strong></p>
 
  <div class="plain" style="margin-top:26px">
   <b>What ENVOLOK does not claim.</b> It does not prevent recalls, warning letters or
   consent decrees, and most of what McKinsey measured has nothing to do with change
-  control plans. <b>ENVOLOK addresses one cause among many</b>: a modification reaching the field outside the boundary FDA authorized.
+  control plans. <b>ENVOLOK addresses one cause among many</b>: a modification reaching
+  the field outside the boundary FDA authorized.
   <br><br>
-  There is no ROI calculator on this page and there will not be one. The numbers above
-  are the stakes, not a saving.
+  There is no ROI calculator on this page and there will not be one. <b>The numbers above
+  are the stakes, not a saving.</b>
  </div>
 </div></section>
 
 <section><div class="w">
- <h2>How many companies this is already true for</h2>
- <p class="body">A scoping review published in April 2026 went through FDA's AI-enabled device list and the
- 510(k), De Novo and PMA databases behind it: <strong>1,394 AI submissions, 77.5 percent of them
- radiology</strong>. Of the radiology devices cleared in 2024 and 2025, <strong>7.1 percent
- carried an authorized change control plan</strong> &mdash; 31 out of 436.</p>
- <p class="body">The plans that exist are mostly thin. The same review scored PCCP documentation against an
- eight-point rubric drawn from FDA's final guidance. <strong>The mean score was five out of
- eight.</strong> The average authorized plan is missing three of the eight domains the guidance asks for.</p>
- <p class="body">And the tracking is worse than the plans. FDA's public database listed <strong>25</strong>
- PCCP-cleared radiology devices. The decision summaries showed <strong>34</strong>. The authors
- had to correct nine of them by hand.</p>
- <p class="body"><strong>The agency's own database was wrong about which devices have a plan.</strong> The
- harder question is what is inside one, and that is asked in a release meeting rather than a
- database.</p>
+ <h2>This is already a live obligation</h2>
+ <p class="body">A 2026 review found authorized PCCPs across FDA-cleared AI devices, and also
+ found that the plans vary substantially in what they document. Even FDA's public database
+ undercounted them: researchers found <strong>34</strong> radiology devices with authorized
+ plans where the database listed <strong>25</strong>.</p>
+ <p class="body"><strong>A PCCP is not a one-time filing. It is a standing commitment that
+ lasts as long as the device is on the market</strong> &mdash; and what is inside one gets
+ asked in a release meeting, not in a database.</p>
 </div></section>
 
 <section><div class="w">
@@ -454,30 +440,21 @@ footer em{font-family:var(--serif)}
  and 2025. Most quality systems in this industry were designed before any of that
  existed, by people who are now carrying an obligation that did not exist when they
  built the process.</p>
- <p class="body">An authorized PCCP is not a one-time filing. <strong>It is a standing
- commitment that lasts as long as the device is on the market</strong>, and every change
- made under it has to be shown to be inside it. Not once. Every time.</p>
+ <p class="body">Every change made under an authorized plan has to be shown to be inside
+ it. <strong>Not once. Every time.</strong></p>
 
  <table class="tbl money" style="margin-top:34px">
   <tr><th>Meanwhile</th><th>Figure</th><th>When</th></tr>
-  <tr><td>Class I recalls &mdash; the category meaning serious injury or death<br>
-      <span class="sm">highest level recorded in fifteen years</span></td>
-      <td class="v">15-year high</td><td class="sm">2024</td></tr>
   <tr><td><b style="color:var(--ink)">Software issues, as a cause of device recalls</b><br>
       <span class="sm">31 of the 236 US device recalls that quarter, second only<br>
       to device failure at 48</span></td>
       <td class="v">2nd leading<br>cause</td><td class="sm">Q1 2025</td></tr>
-  <tr><td>Device failure overtook manufacturing defects<br>
-      <span class="sm">as the leading cause, first time in over five years</span></td>
-      <td class="v">11.1%<br><span class="sm">of device recalls</span></td><td class="sm">2024</td></tr>
-  <tr><td>Medical device units recalled<br>
-      <span class="sm">against the same period a year earlier</span></td>
-      <td class="v">up over 500%</td><td class="sm">first half<br>2026</td></tr>
- </table>
+</table>
 
  <p class="body" style="margin-top:26px">Devices are more software than they used to be,
- software is a growing share of what goes wrong, and the mechanism the industry was given
- to change software faster is <strong>a document that nothing reads.</strong></p>
+ and software is a growing share of what goes wrong. The industry now has a mechanism for
+ authorising future changes &mdash; but <strong>the resulting boundary still has to be
+ interpreted and checked at every release.</strong> ENVOLOK makes that check executable.</p>
 </div></section>
 
 <section><div class="w">
@@ -502,17 +479,11 @@ footer em{font-family:var(--serif)}
  <tr><td>Cases fully passing across five hostile document layouts</td><td>3 / 5</td><td>0 / 5</td></tr>
  <tr><td>After repair, re-tested against the strict scorer</td><td>&mdash;</td><td>5 / 5</td></tr>
 </table>
-<p class="body" style="font-size:.92em"><strong>What you can check, and what you cannot.</strong> The
-strict <em>0 / 5</em> is written into <code>layout_authority/REPORT.md</code> in the release, and the
-repaired <em>5 / 5</em> is reproducible: run <code>layout_authority/run_v20_closure_gauntlet.py</code>
-and it prints all five cases with the strict criteria applied. The lenient run belongs to a v1.9 tree
-that is not shipped, so its per-rule counts are <strong>not verifiable from the package</strong> and are
-not quoted here.</p>
-
- <p class="body" style="margin-top:26px"><strong>The worse number was published as
- the authoritative one</strong>, and the five failures behind it were repaired and
- re-tested against that same harsher scorer. The lenient number was never the one
- reported.</p>
+<p class="body" style="font-size:.92em"><strong>The worse number was published as the
+authoritative one.</strong> The strict <em>0 / 5</em> is in
+<code>layout_authority/REPORT.md</code>, and the repaired <em>5 / 5</em> is reproducible: run
+<code>layout_authority/run_v20_closure_gauntlet.py</code>. The lenient number was never the one
+reported.</p>
 
  <div class="plain">
   <b>And one thing is still open, so it is written down rather than hidden.</b>
@@ -590,20 +561,23 @@ not quoted here.</p>
   <div>
    <h3>Not a quality management system</h3>
    <p>Your eQMS <b>records</b> that a modification was approved and routes it to the right
-   signatures. It does not read the plan FDA authorized and tell you whether this particular modification is inside it. Several of those vendors publish long explainers
+   signatures. What it does not do is execute the boundary and tell you whether this
+   particular modification satisfies it. Several of those vendors publish long explainers
    about PCCPs; every one ends in a demo request.</p>
   </div>
   <div>
    <h3>Not an AI governance platform</h3>
    <p>Gartner named that market in June 2026 and it is a real one, aimed at NIST AI RMF,
-   ISO 42001 and the EU AI Act. It governs AI in general. <b>It does not open your
-   authorized PCCP and check a release against it</b>, and among the leaders, enforcement
-   at the point of deployment is still described as roadmap.</p>
+   ISO 42001 and the EU AI Act. It governs AI in general. <b>ENVOLOK has a narrower job:
+   check one modification against the encoded PCCP boundary and produce the verdict and the
+   evidence record.</b> Among the leaders, enforcement at the point of deployment is still
+   described as roadmap.</p>
   </div>
   <div>
    <h3>Not a regulatory consultant</h3>
    <p>A consultant helps you <b>write</b> the plan and get it authorized. That is real
-   work and worth paying for. Then they leave, the plan goes in a drawer, and every modification made under it for the life of the device is checked by somebody remembering what the plan said.</p>
+   work and worth paying for. ENVOLOK works afterward, when the organisation has to keep
+   making modifications inside that plan for the life of the device.</p>
   </div>
  </div>
 
@@ -647,8 +621,10 @@ not quoted here.</p>
 
 <section class="close"><div class="w" style="padding:70px 30px 66px">
  <h2 style="margin-bottom:14px">Point it at your own PCCP</h2>
- <p class="big" style="margin-bottom:16px">Not a demo on another company's device. The plan FDA authorized for one of yours, a modification actually under review, and a verdict that can be checked line by line against the plan.</p>
- <p class="body" style="margin-bottom:10px">Redact whatever you need to. ENVOLOK reads structure, not secrets. Under NDA if your legal team prefers. It runs on your machine, on your side of the firewall, and there is no version of it that can send anything out.</p>
+ <p class="big" style="margin-bottom:16px">Not a demo on another company's device. Use the plan FDA authorized for one of yours, a modification actually under review, and a verdict that can be checked line by line against the encoded boundary.</p>
+ <p class="body" style="margin-bottom:10px">Redact whatever you need to. Under NDA if your
+ legal team prefers. ENVOLOK runs on your machine, on your side of the firewall, and
+ <strong>makes no network calls during evaluation</strong>.</p>
  <p class="body" style="margin-bottom:8px"><strong>If it disagrees with your own reading of the plan, that is worth knowing too.</strong></p>
  <a class="mail" href="mailto:hello@envolok.com?subject=ENVOLOK">hello@envolok.com</a>
 </div></section>
