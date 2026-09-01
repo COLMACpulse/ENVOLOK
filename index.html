@@ -115,6 +115,16 @@ blockquote cite{display:block;margin-top:12px;font:10.5px var(--mono);color:var(
  padding:24px 28px;margin-top:30px;color:var(--body);font-size:16px;max-width:46em}
 .plain b{color:var(--warn)}
 
+details.rec{border:1px solid var(--rule);background:var(--card);padding:0;margin-top:26px;
+ max-width:46em}
+details.rec>summary{cursor:pointer;padding:16px 22px;color:var(--body);font-size:15px;
+ list-style:none;user-select:none}
+details.rec>summary::-webkit-details-marker{display:none}
+details.rec>summary:before{content:"\25B8 ";color:var(--warn)}
+details.rec[open]>summary:before{content:"\25BE "}
+details.rec>summary:hover{color:var(--ink)}
+details.rec .in{padding:0 22px 20px;font-size:15px;color:var(--body)}
+
 .rule{display:flex;gap:38px;flex-wrap:wrap;margin-top:36px;
  border-top:1px solid var(--rule);padding-top:26px}
 .rule div{min-width:120px}
@@ -459,34 +469,35 @@ footer em{font-family:var(--serif)}
 
 <section><div class="w">
  <h2>What happened when it was attacked</h2>
- <p class="big">This was built by attacking it, publishing what broke, and repairing it. <strong>Eight rounds. The record of every failure ships with the
- instrument.</strong></p>
 
- <p class="body">Some of those attacks landed hard. An early version claimed to
- enforce scope; a red team showed the scope test was a label in a list, and that
- a mislabelled out-of-scope change deployed. <strong>That claim was withdrawn and
- the product got smaller</strong> &mdash; it now demands a written description, a
- named asserter and a boundary bound to its source, and the receipt says what it
- did not check.</p>
+ <p class="big">ENVOLOK was built by attacking it and repairing what broke.
+ <strong>One claim did not survive: an early version said it enforced scope, and a red team
+ showed a mislabelled out-of-scope change still deployed.</strong> The claim was withdrawn
+ and the product got smaller. It now demands a written description, a named asserter, and a
+ boundary bound to its source &mdash; and the receipt states what it did not check.</p>
 
- <p class="body">The clearest example is a scoring one. A hostile layout test was
- scored by one method and passed most cases. <strong>The scorer was then rebuilt
- to be harsher &mdash; rejecting truncated and contaminated rule text &mdash; and
- the same run scored worse.</strong></p>
-
- <table class="tbl">
- <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
- <tr><td>Cases fully passing across five hostile document layouts</td><td>3 / 5</td><td>0 / 5</td></tr>
- <tr><td>After repair, re-tested against the strict scorer</td><td>&mdash;</td><td>5 / 5</td></tr>
-</table>
-<p class="body" style="font-size:.92em"><strong>The worse number was published as the
-authoritative one.</strong> The strict <em>0 / 5</em> is in
-<code>layout_authority/REPORT.md</code>, and the repaired <em>5 / 5</em> is reproducible: run
-<code>layout_authority/run_v20_closure_gauntlet.py</code>. The lenient number was never the one
-reported.</p>
+ <details class="rec">
+  <summary>The full attack record, including the numbers that got worse</summary>
+  <div class="in">
+   <p>Eight rounds. The record of every failure ships with the instrument.</p>
+   <p>The clearest example is a scoring one. A hostile layout test was scored by one method
+   and passed most cases. The scorer was then rebuilt to be harsher, rejecting truncated and
+   contaminated rule text, and <b>the same run scored worse</b>.</p>
+   <table class="tbl">
+   <tr><th>The same run, two scorers</th><th>Lenient</th><th>Strict</th></tr>
+   <tr><td>Cases fully passing across five hostile document layouts</td><td>3 / 5</td><td>0 / 5</td></tr>
+   <tr><td>After repair, re-tested against the strict scorer</td><td>&mdash;</td><td>5 / 5</td></tr>
+   </table>
+   <p><b>The worse number was published as the authoritative one.</b> The strict
+   <em>0 / 5</em> is in <code>layout_authority/REPORT.md</code>, and the repaired
+   <em>5 / 5</em> is reproducible: run
+   <code>layout_authority/run_v20_closure_gauntlet.py</code>. The lenient number was never
+   the one reported.</p>
+  </div>
+ </details>
 
  <div class="plain">
-  <b>And one thing is still open, so it is written down rather than hidden.</b>
+  <b>One thing is still open, so it is written down rather than hidden.</b>
   There is a research path that reads change control plans directly out of PDFs.
   Its layout handling is solid. <b>Its rule detection is not</b> &mdash; it keys on
   document formatting rather than meaning, so it can miss a genuine rule written as
