@@ -174,10 +174,12 @@ footer em{font-family:var(--serif)}
  <h1>FDA authorized your PCCP.<br><em>Who checks it?</em></h1>
  <p class="said"><strong>ENVOLOK&trade; is a program you run before you ship a modification to a cleared device.</strong>
  Your Predetermined Change Control Plan is the list of modifications FDA cleared you to make without filing again.
- You write that plan out once as structured text. ENVOLOK reads the modification's paperwork &mdash;
- what changed, who says it fits, which tests ran, who approved it &mdash; and returns
+ Somebody on your team writes that plan out once as structured text and puts their name to it.
+ <strong>ENVOLOK executes that encoded boundary.</strong> It reads the modification's
+ paperwork &mdash; what changed, who says it fits, which tests ran, who approved it &mdash;
+ and returns
  <b>DEPLOY, BLOCK or UNKNOWN</b>, naming the rule that stopped it. Then it signs a record
- an inspector can verify with nothing but a public key.</p>
+ whose integrity anyone can verify with the public key.</p>
  <div class="underline">Software you run &middot; offline &middot; nothing leaves your network</div>
  </div>
  <div class="hdgm">
@@ -237,13 +239,24 @@ footer em{font-family:var(--serif)}
    <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists
       all twenty-four checks it ran <b>and states what it did not check</b>, inside the
       signed body, so those limits cannot be removed without breaking the signature.
-      Anyone can check it with a public key. ENVOLOK does not have to be installed, and nobody has to be asked.</p>
+      Anyone can verify that receipt's integrity with the public key. ENVOLOK does not have to be
+      installed, and nobody has to be asked. <b>What the public key proves is that the record was
+      not altered</b> &mdash; not that the change was appropriate, and not that the category
+      somebody chose was the right one.</p>
   </div>
  </div>
 
  <p class="body" style="margin-top:30px">It runs on the release engineer's laptop, on a
- validated workstation, or in your build pipeline. <strong>Nothing about your device leaves
- your network, because it has no way to send it anywhere.</strong></p>
+ validated workstation, or in your build pipeline. <strong>ENVOLOK makes no network calls
+ during evaluation, and your device data stays in the environment where you run it.</strong>
+ It has exactly two dependencies, <code>cryptography</code> and <code>PyMuPDF</code>, both
+ named in <code>requirements.txt</code>; everything else is the Python standard library.
+ Point a network monitor at it and check.</p>
+ <p class="body" style="font-size:.92em">One component does reach outward, and only when you
+ run it deliberately: <code>external_anchor.py</code>, which requests an RFC 3161 timestamp so a
+ release can be proved to have existed by a date. <strong>It is a separate command, the engine
+ does not call it, and it sends a hash of the release &mdash; never device data.</strong> If the
+ timestamp authority is unreachable it records UNAVAILABLE rather than faking a success.</p>
 </div></section>
 
 <section><div class="w">
@@ -595,7 +608,8 @@ not quoted here.</p>
   </div>
  </div>
 
- <p class="body" style="margin-top:30px">ENVOLOK is the check. It reads the authorized plan and returns a verdict on the modification in front of you.
+ <p class="body" style="margin-top:30px">ENVOLOK is the check. It executes the boundary your team encoded and attested from the
+   authorized plan, and returns a verdict on the modification in front of you.
  <strong>If your eQMS or your governance platform already does that, do not buy this
  &mdash; ask them to show you the verdict and the rule it cites.</strong></p>
 </div></section>
