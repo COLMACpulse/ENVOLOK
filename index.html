@@ -175,7 +175,7 @@ footer em{font-family:var(--serif)}
   <g fill="none" stroke="#1c4e6b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
    <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/><rect x="13" y="26" width="38" height="27" rx="5"/></g>
   <circle cx="32" cy="39.5" r="6" fill="#0f6f4c"/></svg></span>
- <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">Checks a modification against the plan FDA authorized</span>
+ <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">A release gate for an authorized PCCP. The plan decides, before the change ships.</span>
 </div></div></div>
 
 <div class="hero"><div class="w">
@@ -258,9 +258,10 @@ footer em{font-family:var(--serif)}
  <p class="body" style="margin-top:30px">It runs on the release engineer's laptop, on a
  validated workstation, or in your build pipeline. <strong>ENVOLOK makes no network calls
  during evaluation, and your device data stays in the environment where you run it.</strong>
- It has exactly two dependencies, <code>cryptography</code> and <code>PyMuPDF</code>, both
- named in <code>requirements.txt</code>; everything else is the Python standard library.
- Point a network monitor at it and check.</p>
+ Its dependencies are pinned by exact version in <code>requirements.txt</code>, and
+ <code>preflight.py</code> derives that list by walking every import in the package, so it
+ cannot fall behind the code. Everything else is the Python standard library: no web
+ framework, no HTTP client. Point a network monitor at it and check.</p>
  <p class="body" style="font-size:.92em">One component does reach outward, and only when you
  run it deliberately: <code>external_anchor.py</code>, which requests an RFC 3161 timestamp so a
  release can be proved to have existed by a date. <strong>It is a separate command, the engine
