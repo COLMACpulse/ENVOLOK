@@ -247,9 +247,7 @@ footer em{font-family:var(--serif)}
   </div>
   <div>
    <h3>Three &middot; it clears the change, or stops it</h3>
-   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists
-      all twenty-four checks it ran <b>and states what it did not check</b>, inside the
-      signed body, so those limits cannot be removed without breaking the signature.
+   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists all twenty-four checks it ran <b>and states what it did not check</b>, inside the signed body, so those limits cannot be removed without breaking the signature. <b>Every one of those twenty-four has a test that fails when the check is deleted</b> &mdash; run <code>check_falsifier_coverage.py</code>, which removes each check in turn and reports any that nothing objects to.
       Anyone can verify that receipt's integrity with the public key. ENVOLOK does not have to be
       installed, and nobody has to be asked. <b>What the public key proves is that the record was
       not altered</b> &mdash; not that the change was appropriate, and not that the category
