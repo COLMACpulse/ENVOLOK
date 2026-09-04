@@ -148,6 +148,18 @@ blockquote cite{display:block;margin-top:12px;font:10.5px var(--mono);color:var(
    path with no space in it will otherwise widen the whole document. */
 p,li,td,th,summary,.big,.body,.fine,.plain,.sd,.dcap{overflow-wrap:break-word}
 .fine{display:block;margin-top:12px;color:var(--mut);font-size:13px;line-height:1.55}
+/* Two side-by-side cases with prose. NOT .rule -- see above. */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:34px;
+ border:1px solid var(--rule);border-radius:3px;overflow:hidden;background:var(--card)}
+.cases > div{padding:26px 28px}
+.cases > div:first-child{border-right:1px solid var(--rule)}
+.cases h3{margin:0 0 12px;font:700 16px var(--sans);letter-spacing:0;color:var(--acc)}
+.cases p{margin:0 0 14px;color:var(--body);font-size:15.5px;line-height:1.62}
+.cases p:last-child{margin-bottom:0}
+.cases b{color:var(--ink);font-weight:700;font-size:inherit;font-family:inherit;letter-spacing:0}
+.cases .fine{font-size:13px;color:var(--mut)}
+@media(max-width:860px){.cases{grid-template-columns:1fr}
+ .cases > div:first-child{border-right:0;border-bottom:1px solid var(--rule)}}
 
 .plain{border:1px solid var(--rule);border-left:3px solid var(--warn);background:var(--card);
  padding:24px 28px;margin-top:30px;color:var(--body);font-size:16px;max-width:46em}
@@ -488,7 +500,7 @@ footer em{font-family:var(--serif)}
  <p class="body"><strong>Two FDA clearances, a year apart, put a price on both sides of
  that.</strong></p>
 
- <div class="rule">
+ <div class="cases">
   <div>
    <h3>What it costs to file instead</h3>
    <p>In September 2025 FDA cleared <b>K252586</b>, a Special 510(k) from Odin Medical.
@@ -542,7 +554,7 @@ footer em{font-family:var(--serif)}
  FDA documents covering seven clearances, and it is <b>FDA&rsquo;s own inconsistency</b>,
  not a paraphrase somebody wrote to make a point.</p>
 
- <div class="rule">
+ <div class="cases">
   <div>
    <h3>One submission, two FDA documents</h3>
    <p>For <b>K243804</b>, the clearance letter says FDA&rsquo;s determination
@@ -584,6 +596,87 @@ footer em{font-family:var(--serif)}
   already assumed this. <b>This is the first measurement showing the assumption was not
   merely cautious.</b>
  </div>
+</div></section>
+
+<section><div class="w">
+ <h2>If you build devices, you already know this idea</h2>
+
+ <p class="big">A laser has operating limits. A sensor has tolerances. A validation
+ protocol has acceptance criteria. A manufacturing process has controlled parameters.</p>
+
+ <p class="body">A PCCP creates another boundary: <b>the changes FDA has already authorized
+ you to make, and the conditions those changes have to satisfy.</b> ENVOLOK executes that
+ boundary against a proposed change before it ships, and signs a receipt saying what it
+ checked.</p>
+
+ <div class="cases">
+  <div>
+   <h3>What one second cost</h3>
+   <p>In July 2025 FDA cleared <b>K251149</b>, an update to Cutera&rsquo;s 1726&nbsp;nm
+   AviClear laser. The whole change: a new handpiece with a 3&nbsp;mm square spot, and
+   <b>post-treatment skin cooling reduced from 2 seconds to 1 second.</b></p>
+   <p>That took a full 510(k), filed April and cleared July, plus a prospective clinical
+   study &mdash; ten subjects scheduled for abdominoplasty and rhytidectomy, laser treatment
+   on pre-excised skin, histology read by an independent dermatopathologist.
+   <b>The submission contains no PCCP.</b> The words
+   <span class="mn">PCCP</span> and <span class="mn">Predetermined</span> appear in it zero
+   times. <span class="fine">This is an engineering analogy, not a governed case. Nothing
+   here claims a PCCP would have covered that change &mdash; only that a one-second timer
+   adjustment went through a clinical study and a review cycle.</span></p>
+  </div>
+  <div>
+   <h3>A plan on a radiation machine</h3>
+   <p><b>K250392</b>, cleared 3 November 2025. The ZAP-X Radiosurgery System, a self-shielded
+   3&nbsp;MV linear accelerator. FDA&rsquo;s clearance letter says it plainly:
+   <b>&ldquo;FDA&rsquo;s substantial equivalence determination also included the review and
+   clearance of your Predetermined Change Control Plan.&rdquo;</b></p>
+   <p>The plan authorizes one thing: <b>an additional circular beam 3.0&nbsp;mm across</b>,
+   with a new collimator wheel and the planning and delivery software to commission, select
+   and deliver it. The device already has eight beam sizes, from 4.0 to 25.0&nbsp;mm.
+   <b>ENVOLOK runs sixteen cases against that plan and agrees with it sixteen times.</b></p>
+  </div>
+ </div>
+
+ <div class="plain">
+  <b>The hard part is what the plan does not say.</b> It requires that planned and delivered
+  dose volumes <b>&ldquo;agree&rdquo;</b>, and it states <b>no tolerance</b> &mdash; no
+  percentage, no millimetre, no gamma criterion. It requires that the new field size
+  <b>&ldquo;provides clinical benefit&rdquo;</b>, which is a judgment and not a measurement.
+  <br><br>
+  <b>Neither is encoded here as a number.</b> Both are carried as validation activities the
+  release must show were run, and the receipt records that no threshold exists in the source.
+  The submission is not short of numbers &mdash; it states PDD(10&nbsp;cm) = 40% &plusmn; 2%,
+  a dose rate of 1800 &plusmn; 10% MU/min, positioning accuracy within &plusmn; 1&nbsp;mm.
+  <b>Those are device performance specifications, not the plan&rsquo;s acceptance criteria</b>,
+  and they are deliberately absent from the boundary. On a signed receipt, a tolerance this
+  tool invented would look exactly like one FDA authorized.
+ </div>
+
+ <p class="body" style="margin-top:30px">ZAP-X is not a laser, and this page does not call it
+ one. It fires x-rays. <b>But <span class="mn">IEC 60825-1</span>, &ldquo;Safety of laser
+ products&rdquo;, is in that submission&rsquo;s own FDA-recognized standards list</b>,
+ alongside IEC 60976, IEC 62083 and IEC 60601-2-1 &mdash; the standards its authorized plan
+ requires the change to be tested against. If you work to those, you are reading a boundary
+ written in the vocabulary you already use.</p>
+
+ <details class="rec">
+  <summary>What the ZAP-X run does not establish</summary>
+  <div class="in">
+   <b>The source document is not yet bound.</b> The boundary is encoded from FDA&rsquo;s
+   public 510(k) summary, but the PDF&rsquo;s own bytes have not been hashed and attested,
+   so the plan reads <span class="mn">sha256: NOT_COMPUTED</span> and
+   <span class="mn">attested_by: UNSIGNED</span>. It is an <b>encoded research plan</b>, held
+   out of the canonical corpus and out of <span class="mn">run_all.py</span> until it is
+   bound. Sixteen for sixteen proves the encoding is <em>consistent</em>, not that it
+   describes that specific document.
+   <br><br>
+   <b>And one case deploys that arguably should not.</b> The plan names hardware and software
+   together, but a software-only rollout asserted as the authorized change still returns
+   DEPLOY, because the engine grades a label against a permitted list &mdash; it cannot see
+   whether a collimator wheel was fitted. That is the same mislabel gap the red-team suite
+   ships as a passing test. It is printed in the run output rather than scored as a catch.
+  </div>
+ </details>
 </div></section>
 
 <section><div class="w">
@@ -752,11 +845,17 @@ footer em{font-family:var(--serif)}
 
 <section id="sources"><div class="w">
  <h2>Check every number yourself</h2>
- <p class="body">Ten documents. Between them they hold every figure on this page. Not one was published by ENVOLOK.</p>
+ <p class="body">Eleven documents. Between them they hold every figure on this page. Not one was published by ENVOLOK.</p>
  <div class="srcs">
   <a class="src" href="https://www.fda.gov/media/180978/download">
    <span class="sn">FDA</span><span class="st">Predetermined Change Control Plans for Medical Devices</span>
    <span class="sd">The guidance. All eight worked examples are in Section VIII.</span></a>
+  <a class="src" href="https://www.accessdata.fda.gov/cdrh_docs/pdf25/K250392.pdf">
+   <span class="sn">FDA</span><span class="st">510(k) summary, K250392 &mdash; ZAP-X Radiosurgery System</span>
+   <span class="sd">Cleared 3 November 2025. The authorized PCCP is on pages 8&ndash;9; the eight existing beam sizes are on page 6. The clearance letter states the authorization on page 2.</span></a>
+  <a class="src" href="https://www.accessdata.fda.gov/cdrh_docs/pdf25/K251149.pdf">
+   <span class="sn">FDA</span><span class="st">510(k) summary, K251149 &mdash; AviClear Laser System</span>
+   <span class="sd">Cleared 11 July 2025. A 3&nbsp;mm spot and one second off the cooling timer, with the clinical study that paid for it. Search it for &ldquo;PCCP&rdquo; and count.</span></a>
   <a class="src" href="https://www.accessdata.fda.gov/cdrh_docs/reviews/K253281.pdf">
    <span class="sn">FDA</span><span class="st">Decision summary, K253281</span>
    <span class="sd">UpDoc, cleared 23 December 2025. The authorized PCCP is Section VI.C &mdash; the plan in the terminal above.</span></a>
