@@ -33,6 +33,7 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--body);
  font:17.5px/1.68 var(--serif);-webkit-font-smoothing:antialiased}
 .w{max-width:880px;margin:auto;padding:0 30px}
+@media(max-width:560px){.w,.wide{padding:0 20px}}
 .wide{max-width:1140px;margin:auto;padding:0 30px}
 a{color:var(--acc)}
 p{margin:0 0 20px}
@@ -110,6 +111,43 @@ blockquote cite{display:block;margin-top:12px;font:10.5px var(--mono);color:var(
 .tbl tr:last-child td{border-bottom:0}
 .tbl.money td.v{color:var(--ink);font-weight:700;font-size:16px;white-space:nowrap}
 .tbl .sm{color:var(--mut);font-size:11.5px;font-weight:400}
+/* ── PHONES ──────────────────────────────────────────────────────────────
+   Reported from a phone 2026-09-01: copy cut off. Measured causes, all here.
+
+   The tables are the worst of it. 3 columns of 14px mono with 24px of padding
+   per cell needs about 442px of min-content for the economics table, against
+   roughly 330px of usable width on a 390px screen. NOWRAP ON THE WHOLE .v CELL
+   made it worse: "up to 11.7% of segment revenue, near $300M" cannot break at
+   all. The number is what must stay together, not the sentence around it, so
+   the nowrap moves off the cell and onto the figure. */
+@media(max-width:720px){
+ /* Proportional, NOT equal thirds. table-layout:fixed alone splits three ways
+    evenly, which starved the description column while "a single company" sat in
+    117px of slack. The first column carries the sentence; the other two carry a
+    figure and two or three words. */
+ .tbl{font-size:12.5px;table-layout:fixed;width:100%}
+ .tbl th:first-child,.tbl td:first-child{width:46%}
+ .tbl th:nth-child(2),.tbl td:nth-child(2){width:30%}
+ .tbl th:last-child,.tbl td:last-child{width:24%}
+ .tbl th,.tbl td{padding:10px 7px}
+ .tbl th{font-size:8.5px;letter-spacing:.11em;line-height:1.35}
+ .tbl .sm{font-size:10.5px;line-height:1.45}
+ /* NOWRAP MOVES OFF THE CELL AND ONTO THE FIGURE. Keeping "$7.0B - $8.5B"
+    together is the point; keeping the sentence after it on one line was never
+    the point and was the single biggest cause of the overflow. */
+ .tbl.money td.v{white-space:normal;font-size:14px}
+ .tbl.money td.v .sm{white-space:normal}
+}
+@media(max-width:360px){
+ .tbl{font-size:11.5px}
+ .tbl th,.tbl td{padding:9px 5px}
+}
+.mn{font-family:var(--mono);font-size:.92em;overflow-wrap:anywhere}
+/* Filenames and hashes are the only unbreakable runs on this page and they are
+   all in .mn. This is the backstop for anything that is not: a 44-character
+   path with no space in it will otherwise widen the whole document. */
+p,li,td,th,summary,.big,.body,.fine,.plain,.sd,.dcap{overflow-wrap:break-word}
+.fine{display:block;margin-top:12px;color:var(--mut);font-size:13px;line-height:1.55}
 
 .plain{border:1px solid var(--rule);border-left:3px solid var(--warn);background:var(--card);
  padding:24px 28px;margin-top:30px;color:var(--body);font-size:16px;max-width:46em}
@@ -128,13 +166,18 @@ details.rec .in{padding:0 22px 20px;font-size:15px;color:var(--body)}
 .rule{display:flex;gap:38px;flex-wrap:wrap;margin-top:36px;
  border-top:1px solid var(--rule);padding-top:26px}
 .rule div{min-width:120px}
+@media(max-width:560px){
+ .rule{gap:20px 26px;padding-top:20px}
+ .rule div{min-width:calc(50% - 13px)}
+ .rule b{font-size:24px}
+}
 .rule b{display:block;font:800 30px var(--mono);color:var(--ink);letter-spacing:-.02em}
 .rule span{font:9.5px var(--mono);letter-spacing:.16em;color:var(--mut);text-transform:uppercase}
 
 /* the terminal keeps its own world */
 .dcap{font:14px/1.6 var(--serif);color:var(--mut);margin-bottom:16px;max-width:44ch}
 .dcap b{color:var(--ink);font-weight:700;font-style:normal}
-.dgm{width:100%;height:auto;display:block;overflow:visible;
+.dgm{width:100%;height:auto;display:block;overflow:hidden;
  border-radius:5px;box-shadow:0 2px 14px rgba(20,30,40,.13)}
 .term{fill:#0b1016;stroke:#0b1016;stroke-width:1}
 .tb1,.tb2,.tb3{fill:#3d4a56}
@@ -161,6 +204,7 @@ details.rec .in{padding:0 22px 20px;font-size:15px;color:var(--body)}
 /* close */
 .close{background:var(--card)}
 .mail{display:inline-block;margin-top:10px;font:700 20px var(--mono);color:var(--acc);
+ max-width:100%;overflow-wrap:anywhere;
  text-decoration:none;border-bottom:2px solid rgba(28,78,107,.3);padding-bottom:2px}
 .mail:hover{border-bottom-color:var(--acc)}
 footer{padding:34px 0 60px;color:var(--mut);font:12.5px/1.85 var(--mono)}
@@ -175,7 +219,7 @@ footer em{font-family:var(--serif)}
   <g fill="none" stroke="#1c4e6b" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
    <path d="M22 26 v-7 a10 10 0 0 1 20 0 v7"/><rect x="13" y="26" width="38" height="27" rx="5"/></g>
   <circle cx="32" cy="39.5" r="6" fill="#0f6f4c"/></svg></span>
- <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">A release gate for an authorized PCCP. The plan decides, before the change ships.</span>
+ <span class="wm">ENVO<b>LOK</b><sup class="tm">&trade;</sup></span><span class="tag">Checks a modification against the plan FDA authorized</span>
 </div></div></div>
 
 <div class="hero"><div class="w">
@@ -201,16 +245,16 @@ footer em{font-family:var(--serif)}
    that deployed are modifications the plan permits. The three that blocked are
    patients and behaviours the same FDA document rules out: type 1 diabetes,
    patients under 18, and dosing that is not deterministic.
-  </div><svg class="dgm" viewBox="0 0 470 472" xmlns="http://www.w3.org/2000/svg" role="img"
+  </div><svg class="dgm" viewBox="0 0 531 472" xmlns="http://www.w3.org/2000/svg" role="img"
  aria-label="Terminal output from a real ENVOLOK run against the authorized PCCP for K253281. 4 changes deployed, 3 blocked.">
 <!-- GENERATED from K253281_RESULTS.json. Do not hand-edit: --check fails. -->
-<rect x="1" y="1" width="468" height="470" rx="7" class="term"/>
+<rect x="1" y="1" width="529" height="470" rx="7" class="term"/>
 <circle cx="22" cy="19" r="4.5" class="tb1"/><circle cx="38" cy="19" r="4.5" class="tb2"/><circle cx="54" cy="19" r="4.5" class="tb3"/>
 <text x="74" y="23" class="tt">envolok — K253281</text>
 <text x="20" y="52" class="tl cmd" xml:space="preserve">$ envolok --plan K253281.json --change carb-counting</text>
 <text x="20" y="96" class="tl d" xml:space="preserve">loaded  UpDoc, Inc. · authorized 2025-12-23</text>
 <text x="20" y="118" class="tl d" xml:space="preserve">        5 permitted categories · 24 checks armed</text>
-<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf &#183; asserted by QA/RA</text>
+<text x="20" y="140" class="tl d" xml:space="preserve">        bound to K253281.pdf · asserted by QA/RA</text>
 <text x="20" y="184" class="tl F" xml:space="preserve">  new insulin biosimilar         DEPLOY</text>
 <text x="20" y="206" class="tl F" xml:space="preserve">  Spanish and Mandarin UI        DEPLOY</text>
 <text x="20" y="228" class="tl F" xml:space="preserve">  carb counting                  DEPLOY</text>
@@ -247,7 +291,9 @@ footer em{font-family:var(--serif)}
   </div>
   <div>
    <h3>Three &middot; it clears the change, or stops it</h3>
-   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists all twenty-four checks it ran <b>and states what it did not check</b>, inside the signed body, so those limits cannot be removed without breaking the signature. <b>Every one of those twenty-four has a test that fails when the check is deleted</b> &mdash; run <code>check_falsifier_coverage.py</code>, which removes each check in turn and reports any that nothing objects to.
+   <p>DEPLOY, BLOCK or UNKNOWN, with the failing rule named. The signed receipt lists
+      all twenty-four checks it ran <b>and states what it did not check</b>, inside the
+      signed body, so those limits cannot be removed without breaking the signature.
       Anyone can verify that receipt's integrity with the public key. ENVOLOK does not have to be
       installed, and nobody has to be asked. <b>What the public key proves is that the record was
       not altered</b> &mdash; not that the change was appropriate, and not that the category
@@ -258,10 +304,9 @@ footer em{font-family:var(--serif)}
  <p class="body" style="margin-top:30px">It runs on the release engineer's laptop, on a
  validated workstation, or in your build pipeline. <strong>ENVOLOK makes no network calls
  during evaluation, and your device data stays in the environment where you run it.</strong>
- Its dependencies are pinned by exact version in <code>requirements.txt</code>, and
- <code>preflight.py</code> derives that list by walking every import in the package, so it
- cannot fall behind the code. Everything else is the Python standard library: no web
- framework, no HTTP client. Point a network monitor at it and check.</p>
+ It has exactly two dependencies, <code>cryptography</code> and <code>PyMuPDF</code>, both
+ named in <code>requirements.txt</code>; everything else is the Python standard library.
+ Point a network monitor at it and check.</p>
  <p class="body" style="font-size:.92em">One component does reach outward, and only when you
  run it deliberately: <code>external_anchor.py</code>, which requests an RFC 3161 timestamp so a
  release can be proved to have existed by a date. <strong>It is a separate command, the engine
@@ -430,7 +475,6 @@ footer em{font-family:var(--serif)}
   There is no ROI calculator on this page and there will not be one. <b>The numbers above
   are the stakes, not a saving.</b>
  </div>
-</div>
 </div></section>
 
 <section><div class="w">
@@ -448,18 +492,25 @@ footer em{font-family:var(--serif)}
   <div>
    <h3>What it costs to file instead</h3>
    <p>In September 2025 FDA cleared <b>K252586</b>, a Special 510(k) from Odin Medical.
-   The change: <b>one AI model inside a convenience feature was swapped for a different
-   deep learning method</b>, with the feature's behaviour unchanged. It still required a
-   submission, a standalone performance study and an FDA review cycle.
-   <b>That submission mentions no PCCP.</b></p>
+   The submission <b>&ldquo;addresses an update to the device&rsquo;s Convenience Feature
+   (Cecum AI &hellip;) model algorithm&rdquo;</b> &mdash; one AI model inside one convenience
+   feature. It still required a submission, standalone performance testing and an FDA
+   review cycle. <b>The words <span class="mn">PCCP</span> and
+   <span class="mn">Predetermined</span> appear in it zero times.</b>
+   The PDF ships in the package as <span class="mn">K252586.pdf</span>; count them
+   yourself.</p>
   </div>
   <div>
    <h3>What one is worth</h3>
-   <p>In 2025 FDA cleared <b>K243274</b> for the CDC influenza panel. In its own words the
-   submission <b>"was made to add the Predetermined Change Control Plan &hellip; only. No
-   technological characteristics were changed."</b> No analytical testing. No clinical
-   testing. <b>An entire 510(k) prepared, filed and cleared for the sole purpose of
-   obtaining a plan.</b></p>
+   <p>In 2025 FDA cleared <b>K243274</b> for the CDC influenza panel. Of that submission
+   its own 510(k) Summary says <b>&ldquo;No technological characteristics were
+   changed.&rdquo;</b> Nothing about the device was different.
+   <b>The submission existed to establish the plan.</b>
+   <span class="fine">That sentence is the span bound to the source document&rsquo;s bytes
+   and carried in <span class="mn">K243274_source_extract.txt</span>. The fuller quotation
+   this page previously showed &mdash; naming the plan directly &mdash; sits in the
+   operator&rsquo;s notes and is <b>not</b> inside the bound extract, so it is not shown
+   here until it is. A quote outside the binding is an illustration.</span></p>
   </div>
  </div>
 
@@ -478,6 +529,60 @@ footer em{font-family:var(--serif)}
   ENVOLOK blocks it and a submission is still required. <b>The value is in the changes that
   ARE inside the plan and can now be shown to be</b>, and in never discovering two years
   later that one was not.
+ </div>
+</div></section>
+
+<section><div class="w">
+ <h2>Why a language model reading the PDF is not the product</h2>
+
+ <p class="big">The obvious objection to all of this is that a model could just read the
+ 510(k) and extract the plan. <strong>FDA does not use one name for the thing.</strong></p>
+
+ <p class="body">This was not an argument anybody constructed. It was measured across nine
+ FDA documents covering seven clearances, and it is <b>FDA&rsquo;s own inconsistency</b>,
+ not a paraphrase somebody wrote to make a point.</p>
+
+ <div class="rule">
+  <div>
+   <h3>One submission, two FDA documents</h3>
+   <p>For <b>K243804</b>, the clearance letter says FDA&rsquo;s determination
+   <b>&ldquo;included the review and clearance of your Predetermined Change Control Plan
+   (PCCP)&rdquo;</b>. The Decision Summary for the same submission, also written by FDA,
+   instead calls it a <b>breakpoint change protocol</b>.
+   <b>It uses the string <span class="mn">PCCP</span> zero times.</b></p>
+  </div>
+  <div>
+   <h3>What that costs a keyword filter</h3>
+   <p>A filter searching for <span class="mn">PCCP</span> reports that document as having
+   no plan. <b>It has one, and FDA authorized it.</b> Searching instead for FDA&rsquo;s
+   authorization sentence catches that case and misses <b>K253281</b>, whose authorization
+   lives in a Decision Summary section rather than a clearance-letter paragraph.
+   <b>Two independent lexical methods, two different false negatives.</b></p>
+  </div>
+ </div>
+
+ <p class="body" style="margin-top:30px">The same collapse shows up in this package&rsquo;s
+ own measurements. Extraction recall runs <b>1.000</b> on the documents as written and
+ <b>0.231</b> after paraphrase &mdash; and changing <em>one</em> literal string,
+ <span class="mn">The planned modifications include:</span>, drops it from 1.000 to 0.308 by
+ itself. <b>Modification detection rests on two exact strings.</b> That number is published
+ in <span class="mn">accuracy/EXTRACTION_ACCURACY.json</span> and labelled a demonstration
+ rather than a rate, because the substitutions were the builder&rsquo;s own.
+ <b>K243804 is the same phenomenon happening naturally, in FDA&rsquo;s words, with nobody
+ paraphrasing anything.</b></p>
+
+ <div class="plain">
+  <b>The only reliable signal is not text.</b> FDA&rsquo;s 510(k) database carries a
+  structured field &mdash; <span class="mn">Predetermined Change Control Plan Authorized:
+  Yes</span> &mdash; and it is correct on every document above, including the one where the
+  word never appears. <b>It is a database column, not a phrase in a PDF.</b>
+  <br><br>
+  <b>What this changes in the engine: nothing, and that is the point.</b> ENVOLOK executes
+  a boundary a named person encoded from a document, and its receipt says so. A person
+  reading K243804 sees a breakpoint change protocol and encodes it correctly. A regular
+  expression does not, and neither does a model keying on the same vocabulary. The design
+  already assumed this. <b>This is the first measurement showing the assumption was not
+  merely cautious.</b>
  </div>
 </div></section>
 
@@ -647,7 +752,7 @@ footer em{font-family:var(--serif)}
 
 <section id="sources"><div class="w">
  <h2>Check every number yourself</h2>
- <p class="body">Nine documents. Between them they hold every figure on this page. Not one was published by ENVOLOK.</p>
+ <p class="body">Ten documents. Between them they hold every figure on this page. Not one was published by ENVOLOK.</p>
  <div class="srcs">
   <a class="src" href="https://www.fda.gov/media/180978/download">
    <span class="sn">FDA</span><span class="st">Predetermined Change Control Plans for Medical Devices</span>
